@@ -1,3 +1,5 @@
+package org.GameFramework;
+
 public  class Timer {
 
     public static float times = System.nanoTime();

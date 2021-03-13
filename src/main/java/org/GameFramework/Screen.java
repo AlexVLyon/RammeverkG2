@@ -1,3 +1,4 @@
+package org.GameFramework;
 
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;

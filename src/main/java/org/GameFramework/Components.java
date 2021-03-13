@@ -1,3 +1,5 @@
+package org.GameFramework;
+
 public abstract class Components {
     public Entity entity = null;
 

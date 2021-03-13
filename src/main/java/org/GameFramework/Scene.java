@@ -1,7 +1,9 @@
+package org.GameFramework;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Scene {
+public  class Scene {
     protected Camera camera;
 
 
@@ -19,7 +21,9 @@ public abstract class Scene {
 isRunning = true;
     }
 
-    public abstract void Update(float dt);
+    public  void Update(float dt){
+
+    }
     public void init(){
 
     }

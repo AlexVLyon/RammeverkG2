@@ -1,3 +1,5 @@
+package org.GameFramework;
+
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
@@ -11,7 +13,8 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 
-public class EditScene extends  Scene {
+public class EditScene extends Scene {
+
     public  int positionsize = 3;
     public   int colorssize = 4;
     public   int bytesize = 4;

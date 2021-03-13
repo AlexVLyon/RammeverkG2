@@ -1,10 +1,12 @@
+package org.GameFramework;
+
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 public class Camera {
 
-    int width, height;
+
 private Matrix4f projection, viewMatrix;
 public Vector2f Camerapos;
 
@@ -14,13 +16,7 @@ this.projection = new Matrix4f();
 this.viewMatrix = new Matrix4f();
 adjustProjection();
 }
-/*
-    public Camera(int width, int height){
-        this.width = width;
-        this.height = height;
 
-    }
-*/
     public void adjustProjection(){
     projection.identity();
     projection.ortho(0.0f,32.0f*40.0f,0.0f, 32.0f*21.0f,0.0f,100.0f);

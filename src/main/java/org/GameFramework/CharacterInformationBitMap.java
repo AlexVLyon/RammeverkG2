@@ -1,3 +1,5 @@
+package org.GameFramework;
+
 public class CharacterInformationBitMap {
     float x,y,width,height;
 

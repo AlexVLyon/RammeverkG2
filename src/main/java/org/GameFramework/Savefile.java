@@ -1,3 +1,5 @@
+package org.GameFramework;
+
 // Tom Klasse
 public class Savefile {
     private String filepath;

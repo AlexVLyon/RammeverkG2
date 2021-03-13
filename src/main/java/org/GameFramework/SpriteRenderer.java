@@ -1,4 +1,4 @@
-
+package org.GameFramework;
 
 public class SpriteRenderer extends Components {
     private  boolean firsttime;
