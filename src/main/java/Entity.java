@@ -16,7 +16,7 @@ public class Entity {
 
 
 
-    public List<Component> components;
+    public List<Components> components;
 
     public Entity(String name) {
         this.name = name;
@@ -41,8 +41,8 @@ public class Entity {
     }
 
 
-    public <T extends Component> T GetComponent(Class<T> componentClass){
-        for(Component c : components){
+    public <T extends Components> T GetComponent(Class<T> componentClass){
+        for(Components c : components){
             if(componentClass.isAssignableFrom(c.getClass())){
                 try {
                     return componentClass.cast(c);
@@ -64,7 +64,7 @@ public class Entity {
         }
     }
 
-    public void AddComponent(Component c){
+    public void AddComponent(Components c){
         System.out.println("adding component");
         this.components.add(c);
         c.entity = this;

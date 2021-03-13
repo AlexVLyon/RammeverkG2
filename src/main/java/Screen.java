@@ -19,7 +19,6 @@ private float blue,red,green,alpha;
 
 Entity testing;
     EditScene e = new EditScene();
-    Scene currentsc;
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
 e.init();
@@ -28,7 +27,6 @@ this.testing = new Entity("test objeckt");
 this.testing.AddComponent(new SpriteRenderer());
 
         loop();
-
         // Free the window callbacks and destroy the window
         glfwFreeCallbacks(window);
         glfwDestroyWindow(window);

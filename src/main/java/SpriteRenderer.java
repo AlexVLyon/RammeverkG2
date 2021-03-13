@@ -1,8 +1,6 @@
-package Components;
 
-import com.company.Component;
 
-public class SpriteRenderer extends Component {
+public class SpriteRenderer extends Components {
     private  boolean firsttime;
     @Override
     public void Start() {

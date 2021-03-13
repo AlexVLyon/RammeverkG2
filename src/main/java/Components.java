@@ -1,4 +1,4 @@
-public abstract class Component {
+public abstract class Components {
     public Entity entity = null;
 
     public abstract void Start();
