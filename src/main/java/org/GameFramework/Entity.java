@@ -16,8 +16,6 @@ public class Entity {
     int height;
     int width;
 
-
-
     public List<Components> components;
 
     public Entity(String name) {
