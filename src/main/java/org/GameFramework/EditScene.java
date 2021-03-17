@@ -1,105 +1,50 @@
-package org.GameFramework;
+package com.company;
 
+import Components.SpriteRenderer;
 import org.joml.Vector2f;
-import org.lwjgl.BufferUtils;
-
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL30.glBindVertexArray;
-import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 
-public class EditScene extends Scene {
-
-    public  int positionsize = 3;
-    public   int colorssize = 4;
-    public   int bytesize = 4;
-    public   int vertexsizebytes = (positionsize + colorssize) * bytesize;
-    public  int vertexarrayid, vertexbufferid,elementbufferid;
-    Shader  myshader;
-
-
-
-    public float[] vertexArray={
-            //position                      //color
-             100.5f,0.5f,0.0f,                1.0f,0.0f,0.0f,1.0f,   //bottom right
-            0.5f, 100.5f, 0.0f,              0.0f,1.0f,0.0f,1.0f,   //top left
-            100.5f, 100.5f, 0.0f,               0.0f,0.0f,1.0f,1.0f ,   //top right
-            0.5f, 0.5f, 0.0f,             1.0f,1.0f,0.0f,1.0f   //bottom left
-
-    };
-
-
-
-    public int[] elementArray={
-            2,1,0,
-            0,1,3
-
-
-    };
+public class EditScene extends  Scene {
 
     public EditScene(){
 
     }
-
-
+Shader shader;
 @Override
 public void init(){
-        this.camera = new Camera(new Vector2f());
-        myshader = new Shader("Shader/default.glsl");
-myshader.compile();
+camera = new Camera(new Vector2f());
 
-    vertexarrayid = glGenVertexArrays();
-    glBindVertexArray(vertexarrayid);
 
-    FloatBuffer vertexBuffer = BufferUtils.createFloatBuffer(vertexArray.length);
-    vertexBuffer.put(vertexArray).flip();
+    Texture tex1 = new Texture("assets/images/MoreDmg.png");
 
-    vertexbufferid = glGenBuffers();
-    glBindBuffer(GL_ARRAY_BUFFER,vertexbufferid);
-    glBufferData(GL_ARRAY_BUFFER,vertexBuffer,GL_STATIC_DRAW);
+    Entity entit = new Entity("object 1", new Transform(new Vector2f(100,100), new Vector2f(256,256)));
+    entit.AddComponent(new SpriteRenderer(tex1));
+    this.AddGameObjectsToScreen(entit);
 
-    IntBuffer elementbuffer = BufferUtils.createIntBuffer(elementArray.length);
-    elementbuffer.put(elementArray).flip();
+    Texture tex2 = new Texture("assets/images/testImage.png");
 
-    elementbufferid = glGenBuffers();
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,elementbufferid);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER,elementbuffer,GL_STATIC_DRAW);
+    Entity entit2 = new Entity("object 2", new Transform(new Vector2f(500,100),new Vector2f(256,256)));
+    entit2.AddComponent(new SpriteRenderer(tex1));
+    this.AddGameObjectsToScreen(entit2);
 
 
 
+    shader = new Shader("Shader/default.glsl");
+    shader.compile();
 
-    glVertexAttribPointer(0,positionsize, GL_FLOAT, false, vertexsizebytes, 0);
-    glEnableVertexAttribArray(0);
-
-    glVertexAttribPointer(1,colorssize,GL_FLOAT,false,vertexsizebytes,positionsize*bytesize);
-    glEnableVertexAttribArray(1);
 }
+
+
 
     @Override
     public void Update(float dt) {
+        this.renderer.render();
 
-        myshader.use();
-        camera.Camerapos.x -= dt * 155.0f;
+        for (Entity eni : this.entityList) {
+            eni.Update(dt);
 
-        myshader.uploadMat4f("uProj", camera.getProjectionMatrix());
-        myshader.uploadMat4f("uView", camera.getViewMatrix());
-        glBindVertexArray(vertexarrayid);
-        glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
-
-        glDrawElements(GL_TRIANGLES,elementArray.length,GL_UNSIGNED_INT,0);
-
-
-
-        //disable everything
-        glDisableVertexAttribArray(0);
-        glDisableVertexAttribArray(1);
-        glBindVertexArray(0);
-        myshader.detach();
+        }
     }
+
+
 }

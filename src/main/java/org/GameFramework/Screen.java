@@ -1,33 +1,37 @@
-package org.GameFramework;
+package com.company;
+
+import Components.SpriteRenderer;
 
 import org.lwjgl.Version;
+import org.lwjgl.glfw.*;
 import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.system.MemoryStack;
+import org.lwjgl.opengl.*;
+import org.lwjgl.system.*;
 
 import java.nio.IntBuffer;
 
-import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
+
+import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.system.MemoryStack.stackPush;
-import static org.lwjgl.system.MemoryUtil.NULL;
+import static org.lwjgl.system.MemoryStack.*;
+import static org.lwjgl.system.MemoryUtil.*;
 
 public class Screen extends Scene{
 private long window;
 private float blue,red,green,alpha;
 
-Entity testing;
+
     EditScene e = new EditScene();
+
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
-e.init();
 
-this.testing = new Entity("test objeckt");
-this.testing.AddComponent(new SpriteRenderer());
+        e.init();
+        e.start();
 
         loop();
+
         // Free the window callbacks and destroy the window
         glfwFreeCallbacks(window);
         glfwDestroyWindow(window);
@@ -108,8 +112,8 @@ this.testing.AddComponent(new SpriteRenderer());
         // LWJGL detects the context that is current in the current thread,
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
-float beginTime = Timer.getTimes();
-        float endtime = Timer.getTimes();
+float beginTime = (float)glfwGetTime();
+        float endtime = (float)glfwGetTime();
         float dt = -1.0f;
 
 
@@ -131,10 +135,11 @@ if(dt >= 0)
             // invoked during this call.
             glfwPollEvents();
 
-            endtime = Timer.getTimes();
+            endtime = (float)glfwGetTime();
             dt = endtime - beginTime;
             beginTime = endtime;
         }
+
 
 
     }

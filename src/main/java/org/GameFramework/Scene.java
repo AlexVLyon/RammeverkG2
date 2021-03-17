@@ -1,14 +1,15 @@
-package org.GameFramework;
+package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public  class Scene {
-    protected Camera camera;
+public abstract class Scene {
+    protected Renderer renderer = new Renderer();
+    protected static Camera camera;
 
 
-    private List<Entity> entityList = new ArrayList<>();
-    boolean isRunning;
+    public List<Entity> entityList = new ArrayList<>();
+    boolean isRunning = false;
 
     public Scene() {
         start();
@@ -16,19 +17,35 @@ public  class Scene {
 
 
     public void start(){
-        for(Entity en : entityList)
+        for(Entity en : entityList) {
             en.Start();
+this.renderer.add(en);
+        }
+
 isRunning = true;
     }
 
-    public  void Update(float dt){
-
-    }
+    public abstract void Update(float dt);
     public void init(){
 
     }
 
+    public void AddGameObjectsToScreen(Entity add){
+        if(!isRunning){
+            entityList.add(add);
 
+        }else
+        {
+            entityList.add(add);
+            add.Start();
+            this.renderer.add(add);
+        }
+
+    }
+
+public static  Camera getcamera(){
+        return camera;
+}
 
 
 }

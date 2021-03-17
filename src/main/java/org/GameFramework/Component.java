@@ -1,6 +1,6 @@
-package org.GameFramework;
+package com.company;
 
-public abstract class Components {
+public abstract class Component {
     public Entity entity = null;
 
     public abstract void Start();

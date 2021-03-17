@@ -1,4 +1,6 @@
-package org.GameFramework;
+package com.company;
+
+
 
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
@@ -6,6 +8,7 @@ import org.lwjgl.BufferUtils;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Paths;
 
 import static org.lwjgl.opengl.GL20.*;
@@ -92,5 +95,17 @@ public void uploadMat4f(String name, Matrix4f mat4){
     mat4.get(matBuffer);
     glUniformMatrix4fv(location, false, matBuffer);
 }
+
+    public void UploadTexture(String name, int slot){
+        int location = glGetUniformLocation(shaderID, name);
+        use();
+        glUniform1i(location,slot);
+    }
+
+    public void uploadIntArray(String name, int[] array){
+        int location = glGetUniformLocation(shaderID, name);
+        use();
+        glUniform1iv(location,array);
+    }
 
 }

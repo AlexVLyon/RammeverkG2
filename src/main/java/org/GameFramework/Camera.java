@@ -1,4 +1,5 @@
-package org.GameFramework;
+package com.company;
+
 
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
@@ -6,9 +7,9 @@ import org.joml.Vector3f;
 
 public class Camera {
 
-
 private Matrix4f projection, viewMatrix;
 public Vector2f Camerapos;
+
 
 public Camera(Vector2f posisjon){
 this.Camerapos = posisjon;
@@ -16,6 +17,8 @@ this.projection = new Matrix4f();
 this.viewMatrix = new Matrix4f();
 adjustProjection();
 }
+
+
 
     public void adjustProjection(){
     projection.identity();
@@ -37,19 +40,5 @@ adjustProjection();
     return this.projection;
     }
 
-    public void translate(int x, int y){
 
-    }
-
-    public void zoom(float zoomVal){
-
-    }
-
-    public void bindTo(int x, int y){
-
-
-    }
-    public void transition(Camera AnewCameraTolook){
-
-    }
 }
