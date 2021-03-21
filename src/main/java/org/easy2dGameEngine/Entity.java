@@ -1,4 +1,4 @@
-package com.company;
+package org.easy2dGameEngine;
 
 import java.awt.*;
 import java.util.ArrayList;

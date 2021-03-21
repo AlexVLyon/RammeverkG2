@@ -1,4 +1,4 @@
-package com.company;
+package org.easy2dGameEngine;
 
 import Components.SpriteRenderer;
 import org.joml.Vector2f;

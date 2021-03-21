@@ -1,4 +1,4 @@
-package com.company;
+package org.easy2dGameEngine;
 
 public abstract class Component {
     public Entity entity = null;

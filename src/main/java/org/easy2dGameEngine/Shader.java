@@ -1,6 +1,4 @@
-package com.company;
-
-
+package org.easy2dGameEngine;
 
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
