@@ -42,15 +42,15 @@ public void init(){
 
 
 if(KeyEventListener.isButtonPressed(GLFW_KEY_D))
-    entity1.Gettransform.position.x += 5;
+    entity1.MoveEntityX(5);
 
        else if (KeyEventListener.isButtonPressed(GLFW_KEY_A))
-        entity1.Gettransform.position.x -= 5;
+    entity1.MoveEntityX(-5);
     if (KeyEventListener.isButtonPressed(GLFW_KEY_W))
-        entity1.Gettransform.position.y += 5;
+        entity1.MoveEntityY(5);
 
     else if (KeyEventListener.isButtonPressed(GLFW_KEY_S))
-        entity1.Gettransform.position.y -= 5;
+        entity1.MoveEntityY(-5);
 
 
     AddGameObjectsToScreen(entity2);

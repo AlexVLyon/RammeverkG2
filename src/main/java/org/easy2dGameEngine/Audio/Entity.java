@@ -28,6 +28,14 @@ public Entity(String TexturefilePath, int x, int y){
 
 }
 
+public void MoveEntityX(float x){
+    this.Gettransform.position.x += x;
+}
+
+    public void MoveEntityY(float y){
+        this.Gettransform.position.y += y;
+    }
+
     public <T extends Component> T GetComponent(Class<T> componentClass){
         for(Component c : components){
             if(componentClass.isAssignableFrom(c.getClass())){
