@@ -1,19 +1,13 @@
-package org.easy2dGameEngine;
-
-import org.easy2dGameEngine.Audio.BackgroundSound;
-
-import java.util.Scanner;
+package org.easy2dGameEngine.Audio;
 
 public class Main {
 
     public static void main(String[] args) {
 
 
-
-        // Sound:
         try
         {
-            String filePath = "src/main/java/org/easy2dGameEngine/Audio/mixkit-rain-and-thunder-storm-2390.wav";
+            String filePath = "C:/Users/Mohammed Ali Davami/Desktop/GameEngine/src/com/company/Audio/mixkit-rain-and-thunder-storm-2390.wav";
             BackgroundSound audioPlayer = new BackgroundSound(filePath);
             System.out.println("PLAY");
 
@@ -26,11 +20,15 @@ public class Main {
             ex.printStackTrace();
 
         }
+
+
+
         Screen s = new Screen();
-        s.CreateWindow(1000,1000,"asd");
+        s.CreateWindow(1000,1000,"Mario");
+        //  Texture tex1 = new Texture("assets/images/MoreDmg.png");
+
 
         s.run();
-
 
 
 

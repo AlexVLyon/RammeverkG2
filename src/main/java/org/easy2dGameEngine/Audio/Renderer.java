@@ -1,4 +1,4 @@
-package org.easy2dGameEngine;
+package org.easy2dGameEngine.Audio;
 
 import Components.SpriteRenderer;
 
@@ -13,27 +13,27 @@ public class Renderer {
         this.batchList = new ArrayList<>();
     }
 
+
     public void add(Entity en){
 
         SpriteRenderer spriteRenderer = en.GetComponent(SpriteRenderer.class);
-        if (spriteRenderer != null)
+
             add(spriteRenderer);
 
     }
 
     public void add(SpriteRenderer en){
-        System.out.println("heell");
+
         boolean added = false;
-        for(int i = 0; i < batchList.size(); i++){
+        for(RenderBatch batch : batchList){
 
-            if(batchList.get(i).hasSpace){
+            if(batch.hasRoom()){
 
-                batchList.get(i).addSprite(en);
+                batch.addSprite(en);
                 added = true;
 
                 break;
-            }else
-                System.out.println("hay");
+            }
         }
         if (!added){
             RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE);

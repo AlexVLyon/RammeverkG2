@@ -1,11 +1,9 @@
 package Components;
 
-import org.easy2dGameEngine.Component;
-import org.easy2dGameEngine.Texture;
+import org.easy2dGameEngine.Audio.Component;
+import org.easy2dGameEngine.Audio.Texture;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
-
-import java.util.Vector;
 
 public class SpriteRenderer extends Component {
     private  boolean firsttime;
@@ -16,16 +14,9 @@ public class SpriteRenderer extends Component {
 
     @Override
     public void Start() {
-        System.out.println("starting");
+
     }
 
-    @Override
-    public void Update(float dt) {
-        if(!firsttime) {
-            System.out.println("I am updating");
-firsttime = true;
-        }
-    }
 
     public Vector4f getColor() {
         return color;

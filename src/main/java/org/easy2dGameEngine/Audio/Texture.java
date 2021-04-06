@@ -1,4 +1,4 @@
-package org.easy2dGameEngine;
+package org.easy2dGameEngine.Audio;
 
 
 import org.lwjgl.BufferUtils;
@@ -54,6 +54,7 @@ public class Texture {
     }
 
     public void Bind(){
+
         glBindTexture(GL_TEXTURE_2D,textureId);
     }
 
