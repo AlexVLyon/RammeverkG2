@@ -10,7 +10,6 @@ public class Camera {
 private Matrix4f projection, viewMatrix;
 public Vector2f Camerapos;
 
-
 public Camera(Vector2f posisjon){
 this.Camerapos = posisjon;
 this.projection = new Matrix4f();
@@ -18,7 +17,10 @@ this.viewMatrix = new Matrix4f();
 adjustProjection();
 }
 
-
+public void followEntity(Entity entity, int x, int y){
+    this.Camerapos.x = entity.Gettransform.position.x + x;
+    this.Camerapos.y = entity.Gettransform.position.y + y;
+}
 
     public void adjustProjection(){
     projection.identity();

@@ -55,7 +55,7 @@ if(KeyEventListener.isButtonPressed(GLFW_KEY_D))
 
     AddGameObjectsToScreen(entity2);
 
-
+camera.followEntity(entity1,-600,-300);
 
 
 
