@@ -35,7 +35,7 @@ public class RenderBatch {
         private int numSprites;
         private boolean hasRoom;
         private float[] vertices;
-        private int[] texSlots = {0, 1, 2, 3, 4, 5, 6, 7};
+        private int[] texSlots = {0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15};
 
         private List<Texture> textures;
         private int vaoID, vboID;
@@ -104,6 +104,7 @@ public class RenderBatch {
             }
 
 if(!exists) {
+
     this.sprites[index] = spr;
     this.numSprites++;
 
@@ -130,12 +131,13 @@ if(!exists) {
 
             // Use shader
             shader.use();
-            shader.uploadMat4f("uProjection", ScreenEditor.camera.getProjectionMatrix());
-            shader.uploadMat4f("uView", ScreenEditor.camera.getViewMatrix());
-            for (int i = 0; i < textures.size(); i++) {
-                glActiveTexture(GL_TEXTURE0 + i + 1);
+            shader.uploadMat4f("uProjection", GameEditor.camera.getProjectionMatrix());
+            shader.uploadMat4f("uView", GameEditor.camera.getViewMatrix());
+            for (int i = 0; i < textures.size()-1; i++) {
+                glActiveTexture(GL_TEXTURE0 + i +1);
                 textures.get(i).Bind();
             }
+
             shader.uploadIntArray("uTextures", texSlots);
 
             glBindVertexArray(vaoID);
@@ -148,7 +150,7 @@ if(!exists) {
             glDisableVertexAttribArray(1);
             glBindVertexArray(0);
 
-            for (int i = 0; i < textures.size(); i++) {
+            for (int i = 0; i < textures.size()-1; i++) {
                 textures.get(i).UnBind();
             }
             shader.detach();
@@ -164,9 +166,9 @@ if(!exists) {
                 Vector4f color = sprite.getColor();
                 Vector2f[] texCoords = sprite.getTextCoordin();
 
-                int texId = 0;
+                int texId = 1;
                 if (sprite.getTexture() != null) {
-                    for (int i = 0; i < textures.size(); i++) {
+                    for (int i = 0; i < textures.size()-1; i++) {
                         if (textures.get(i) == sprite.getTexture()) {
                             texId = i + 1;
                             break;

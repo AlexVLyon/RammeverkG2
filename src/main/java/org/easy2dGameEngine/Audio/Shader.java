@@ -3,15 +3,21 @@ package org.easy2dGameEngine.Audio;
 
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
+import org.lwjgl.opengl.GL15;
 
 import java.nio.FloatBuffer;
 
+import static org.lwjgl.opengl.GL15C.GL_ELEMENT_ARRAY_BUFFER;
+import static org.lwjgl.opengl.GL15C.glGenBuffers;
 import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
+import static org.lwjgl.opengl.GL31.GL_TEXTURE_BUFFER;
 
 
 public class Shader {
 private int shaderID;
 boolean using;
+
 private String vertexShaderSrc = "#version 330 core\n" +
         "layout (location=0) in vec3 aPos;\n" +
         "layout (location=1) in vec4 aColor;\n" +
@@ -40,7 +46,7 @@ private String fragmentShaderSrc = " #version 330 core\n" +
         "in vec2 fTexCoords;\n" +
         "in float fTexId;\n" +
         "\n" +
-        "uniform sampler2D uTextures[8];\n" +
+        "uniform sampler2D uTextures[16];\n" +
         "\n" +
         "out vec4 color;\n" +
         "\n" +
@@ -55,8 +61,14 @@ private String fragmentShaderSrc = " #version 330 core\n" +
         "    }\n" +
         "}\n";
 
-public Shader(){
 
+
+
+
+
+
+    public Shader(){
+compile();
 }
 
 
@@ -82,6 +94,7 @@ public Shader(){
 
 
     }
+
 
     public void use(){
         if(!using) {
@@ -113,6 +126,10 @@ public void uploadMat4f(String name, Matrix4f mat4){
         glUniform1iv(location,array);
     }
 
-
+    public void UploadTexture(String name, int slot){
+        int location = glGetUniformLocation(shaderID, name);
+        use();
+        glUniform1i(location,slot);
+    }
 
 }

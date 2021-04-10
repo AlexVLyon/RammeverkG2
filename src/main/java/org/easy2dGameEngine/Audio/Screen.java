@@ -5,12 +5,16 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
+import sun.awt.AppContext;
 
+import java.awt.*;
 import java.nio.IntBuffer;
+import java.util.concurrent.TimeUnit;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11C.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -28,6 +32,7 @@ private float blue,red,green,alpha;
         editScene.init();
 
         editScene.start();
+
         loop();
 
 
@@ -110,26 +115,34 @@ glfwSetKeyCallback(window,KeyEventListener::invoke);
         GL.createCapabilities();
     }
 
-    private void loop() {
 
-        // This line is critical for LWJGL's interoperation with GLFW's
-        // OpenGL context, or any context that is managed externally.
-        // LWJGL detects the context that is current in the current thread,
-        // creates the GLCapabilities instance and makes the OpenGL
-        // bindings available for use.
 
+    private void loop()  {
+glEnable(GL_DEPTH_TEST);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Set the clear color
-        glClearColor(red, green, blue, alpha);
 
+        glDisable(GL_DEPTH_TEST);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+            glClearColor(red, green, blue, alpha);
 
+            glClear(GL_COLOR_BUFFER_BIT); // clear the framebuffer
 
             editScene.Update();
             editScene.Render();
+
+
+
+
+
+
+
             glfwSwapBuffers(window); // swap the color buffers
 
 

@@ -41,6 +41,7 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-par::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
     implementation "org.joml:joml:${jomlVersion}"
+    implementation 'org.jetbrains:annotations:15.0'
 
 
 }

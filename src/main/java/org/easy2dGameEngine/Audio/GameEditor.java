@@ -5,19 +5,16 @@ import org.joml.Vector2f;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ScreenEditor {
+public abstract class GameEditor {
     protected Renderer renderer = new Renderer();
-
     protected static Camera camera = new Camera(new Vector2f(0,0));
-
-
     public List<Entity> entityList = new ArrayList<>();
 
 
-    public ScreenEditor() {
 
-        start();
-    }
+
+
+
     public void Render(){
         this.renderer.render();
     }
@@ -39,9 +36,13 @@ this.renderer.add(en);
 
     public void AddGameObjectsToScreen(Entity add)
     {
+
+
             entityList.add(add);
             add.Start();
-            this.renderer.add(add);
+        this.renderer.add(add);
+
+
     }
 
 public Camera getcamera(){

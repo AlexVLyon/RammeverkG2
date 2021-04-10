@@ -1,66 +1,45 @@
 package org.easy2dGameEngine.Audio;
 
-import static org.lwjgl.glfw.GLFW.*;
+public class EditScene extends GameEditor {
 
 
-public class EditScene extends ScreenEditor {
 
-    public Entity entity1,entity2;
+    public Entity entity1,entity2,entity3;
+
     public EditScene(){
 
-    }
 
+
+    }
+    FontBatch batch = new FontBatch();
 @Override
 public void init(){
 
+    entity1 = new Entity("assets/images/MoreDmg.png",111,111);
+    entity2 = new Entity("assets/images/MoreDmg.png",211,111);
 
-    entity2 = new Entity("assets/images/MoreDmg.png", 100,100);
-    entity2.Gettransform.AdjustScale(50,40);
-
-    entity1 = new Entity("assets/images/testImage.png", 50,100);
-      entity1.Gettransform.AdjustScale(50,40);
-
-
-
-
-
-
-
-
-
-
+    batch.initBatch();
 }
 
-
-
+//depth-buffering
 
     @Override
     public void Update() {
 
         AddGameObjectsToScreen(entity1);
+        AddGameObjectsToScreen(entity2);
 
 
 
-if(KeyEventListener.isButtonPressed(GLFW_KEY_D))
-    entity1.MoveEntityX(5);
 
-       else if (KeyEventListener.isButtonPressed(GLFW_KEY_A))
-    entity1.MoveEntityX(-5);
-    if (KeyEventListener.isButtonPressed(GLFW_KEY_W))
-        entity1.MoveEntityY(5);
-
-    else if (KeyEventListener.isButtonPressed(GLFW_KEY_S))
-        entity1.MoveEntityY(-5);
-
-
-    AddGameObjectsToScreen(entity2);
-
-camera.followEntity(entity1,-600,-300);
+        batch.flushBatch();
+        batch.addText("Hello wo77rlD! =>", 200, 200, 1f, 0xFF00AB0);
 
 
 
-        entity2.Collision(entity1);
+
+
+
+
     }
-
-
 }

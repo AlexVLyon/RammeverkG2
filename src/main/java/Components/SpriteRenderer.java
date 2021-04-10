@@ -6,9 +6,9 @@ import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 public class SpriteRenderer extends Component {
-    private  boolean firsttime;
+
     private Vector4f color;
-    private Vector2f[]  textCoordin;
+
     private Texture texture;
 
 

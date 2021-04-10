@@ -11,18 +11,15 @@ public class Entity {
     // Location
     public List<Component> components;
 
+
+
     String TexturefilePath;
-    Texture tex;
+    Texture tex,te1;
     public Transform Gettransform;
 
 public Entity(String TexturefilePath, int x, int y){
-
     this.TexturefilePath = TexturefilePath;
-
-
     this.Gettransform = new Transform(x,y);
-
-
     this.components = new ArrayList<>();
     AddComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
 
@@ -30,6 +27,7 @@ public Entity(String TexturefilePath, int x, int y){
 
 public void MoveEntityX(float x){
     this.Gettransform.position.x += x;
+
 }
 
     public void MoveEntityY(float y){
@@ -70,10 +68,12 @@ public void MoveEntityX(float x){
             components.get(i).Start();
         }
     }
+
 public void flip(){
     stbi_set_flip_vertically_on_load(true);
 
 }
+
 
     public boolean Collision(Entity entityCollision){
         if(entityCollision.Gettransform.position.x+20 >= this.Gettransform.position.x  && entityCollision.Gettransform.position.x <= this.Gettransform.position.x+ 20 &&
