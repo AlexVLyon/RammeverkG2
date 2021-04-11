@@ -70,7 +70,7 @@ public class FontRenderer {
             if (font.canDisplay(i)) {
                 CharacterInformationBitMap info = characterMap.get(i);
                 info.CalculateCoordiantes(width, height);
-                g2d.drawString("" + (char)i, info.x, info.y-6);
+                g2d.drawString("" + (char)i, info.x, info.y-5);
             }
         }
         g2d.dispose();

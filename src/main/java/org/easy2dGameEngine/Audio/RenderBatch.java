@@ -181,11 +181,11 @@ if(!exists) {
                 Vector4f color = sprite.getColor();
                 Vector2f[] texCoord = sprite.getTextCoordin();
 
-                int texId = 1;
+                int texId = 0;
                 if (sprite.getTexture() != null) {
-                    for (int i = 0; i < textures.size()-1; i++) {
+                    for (int i = 0; i < textures.size(); i++) {
                         if (textures.get(i) == sprite.getTexture()) {
-                            texId = i + 1;
+                            texId = i+1;
                             break;
                         }
                     }
@@ -228,7 +228,7 @@ if(!exists) {
         private int[] generateIndices() {
             // 6 indices per quad (3 per triangle)
             int[] elements = new int[6 * maxBatchSize];
-            for (int i = 0; i < maxBatchSize; i++) {
+            for (int i = 0; i < maxBatchSize-1; i++) {
                 loadElementIndices(elements, i);
             }
 

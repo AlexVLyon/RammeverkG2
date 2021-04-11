@@ -10,7 +10,7 @@ import static org.lwjgl.stb.STBImage.stbi_set_flip_vertically_on_load;
 public class Entity {
     // Location
     public List<Component> components;
-
+    boolean InstaniateCpu = false;
 
 
     String TexturefilePath;
@@ -23,6 +23,14 @@ public Entity(String TexturefilePath, int x, int y){
     this.components = new ArrayList<>();
     AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
 
+    if(!InstaniateCpu)
+    AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
+    InstaniateCpu = true;
+}
+
+
+public Entity(){
+    AddAComponent(new SpriteRenderer(tex = new Texture("")));
 }
 
 public void MoveEntityX(float x){

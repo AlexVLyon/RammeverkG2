@@ -16,7 +16,7 @@ public class SpriteRenderer extends Component {
     public void Start() {
 
     }
-
+public SpriteRenderer(){}
 
     public Vector4f getColor() {
         return color;

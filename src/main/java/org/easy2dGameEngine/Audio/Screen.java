@@ -6,6 +6,7 @@ import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
+import java.io.IOException;
 import java.nio.IntBuffer;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -19,17 +20,24 @@ public class Screen {
 private long window;
 private float blue,red,green,alpha;
 
+//set method class
+private GameEditor s;
 
-   private EditScene editScene = new EditScene();
+public void ConnectClassToScreen(GameEditor screenConntector){
+    s = screenConntector;
 
-
-    public void run() {
+}
+    public void run()  {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
-
+s.init();
+s.start();
+/*
         editScene.init();
 
         editScene.start();
 
+
+ */
         loop();
 
 
@@ -130,10 +138,13 @@ glEnable(GL_DEPTH_TEST);
             glClearColor(red, green, blue, alpha);
 
             glClear(GL_COLOR_BUFFER_BIT); // clear the framebuffer
-
+/*
             editScene.Update();
             editScene.Render();
 
+ */
+s.Update();
+s.Render();
 
 
 

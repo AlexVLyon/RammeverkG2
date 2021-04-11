@@ -1,6 +1,12 @@
 package org.easy2dGameEngine.Audio;
 
+
+
+
+
 import org.joml.Vector2f;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +22,7 @@ boolean firstime = true;
 
 public void AddTextToScreen(String text, int xpos, int ypos, float scale, int rgbColors){
 if(firstime) {
+
     batch.initBatch();
     firstime = false;
 }
@@ -38,24 +45,24 @@ this.renderer.add(en);
 
     }
 
-    public abstract void Update();
+    public abstract void Update() ;
     public abstract void init();
 
 public void removeGameObject(Entity add){
     entityList.remove(add);
     renderer.RemoveEntity(add);
 
-
 }
-    public void AddGameObjectsToScreen(Entity add)
-    {
 
 
-            entityList.add(add);
-            add.Start();
+    public void AddGameObjectsToScreen(Entity add)  {
+
+
+
+
+        entityList.add(add);
+        add.Start();
         this.renderer.add(add);
-
-
     }
 
 public Camera getcamera(){

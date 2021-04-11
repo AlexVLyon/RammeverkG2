@@ -20,7 +20,7 @@ public class FontBatch {
 
     // 25 quads
     public static int BATCH_SIZE = 1000;
-    public static int VERTEX_SIZE = 7;
+    public static int VERTEX_SIZE = 6;
     public float[] vertices = new float[BATCH_SIZE * VERTEX_SIZE];
     public int size = 0;
     private Matrix4f GetShaderprojection = new Matrix4f();
