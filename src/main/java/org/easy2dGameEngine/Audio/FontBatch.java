@@ -2,17 +2,11 @@ package org.easy2dGameEngine.Audio;
 
 
 import org.joml.Matrix4f;
-import org.lwjgl.opengl.GL15;
-import sun.font.TrueTypeFont;
 
-import java.awt.*;
-
-import static org.lwjgl.opengl.GL11.GL_STACK_OVERFLOW;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL15C.GL_ELEMENT_ARRAY_BUFFER;
 import static org.lwjgl.opengl.GL15C.glGenBuffers;
 import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 import static org.lwjgl.opengl.GL31.GL_TEXTURE_BUFFER;
@@ -25,7 +19,7 @@ public class FontBatch {
     };
 
     // 25 quads
-    public static int BATCH_SIZE = 100;
+    public static int BATCH_SIZE = 1000;
     public static int VERTEX_SIZE = 7;
     public float[] vertices = new float[BATCH_SIZE * VERTEX_SIZE];
     public int size = 0;
@@ -39,7 +33,7 @@ public class FontBatch {
 
 
 
-    public void generateEbo() {
+    void GenerateElementBuffer() {
         int elementSize = BATCH_SIZE * 3;
         int[] elementBuffer = new int[elementSize];
 
@@ -51,23 +45,7 @@ public class FontBatch {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, elementBuffer, GL_STATIC_DRAW);
     }
-
-    public void initBatch() {
-
-        shader = new FontShader("fontShader.glsl");
-        font = new FontRenderer( 64);
-        projection.identity();
-        projection.ortho(0, 800, 0, 600, 1f, 100f);
-
-        vao = glGenVertexArrays();
-        glBindVertexArray(vao);
-
-        vbo = glGenBuffers();
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glBufferData(GL_ARRAY_BUFFER, Float.BYTES * VERTEX_SIZE * BATCH_SIZE, GL_DYNAMIC_DRAW);
-
-        generateEbo();
-
+    void GenerateShaderPointers(){
         int stride = 7 * Float.BYTES;
         glVertexAttribPointer(4, 2, GL_FLOAT, false, stride, 0);
         glEnableVertexAttribArray(4);
@@ -79,7 +57,31 @@ public class FontBatch {
         glEnableVertexAttribArray(6);
     }
 
-    public void flushBatch() {
+
+
+    public void initBatch() {
+
+        shader = new FontShader();
+        font = new FontRenderer( 22);
+
+        projection.identity();
+        projection.ortho(0, 800, 0, 600, 1f, 100f);
+
+        vao = glGenVertexArrays();
+        glBindVertexArray(vao);
+
+        vbo = glGenBuffers();
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferData(GL_ARRAY_BUFFER, Float.BYTES * VERTEX_SIZE * BATCH_SIZE, GL_DYNAMIC_DRAW);
+
+        GenerateElementBuffer();
+
+      GenerateShaderPointers();
+    }
+
+
+
+    public void UpdateText() {
 
         // Clear the buffer on the GPU, and then upload the CPU contents, and then draw
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -100,31 +102,24 @@ public class FontBatch {
         // Reset batch for use on next draw call
         size = 0;
         shader.detach();
-
-
-
     }
 
-    public void addCharacter(float x, float y, float scale, CharacterInformationBitMap charInfo, int rgb) {
-        // If we have no more room in the current batch, flush it and start with a fresh batch
-        if (size >= BATCH_SIZE - 4) {
-            flushBatch();
-        }
 
+    public void addCharacter(float x, float y, float scale, CharacterInformationBitMap charInfo, int rgb) {
         float r = (float)((rgb >> 16) & 0xFF) / 255.0f;
         float g = (float)((rgb >> 8) & 0xFF) / 255.0f;
         float b = (float)((rgb) & 0xFF) / 255.0f;
 
-        float x0 = x;
-        float y0 = y;
+
+
         float x1 = x + scale * charInfo.width;
         float y1 = y + scale * charInfo.height;
 
-        float ux0 = charInfo.textureCoordinates[0].x; float uy0 = charInfo.textureCoordinates[0].y;
-        float ux1 = charInfo.textureCoordinates[1].x; float uy1 = charInfo.textureCoordinates[1].y;
+        float ux0 = charInfo.textureBitmapCoordinates[0].x; float uy0 = charInfo.textureBitmapCoordinates[0].y;
+        float ux1 = charInfo.textureBitmapCoordinates[1].x; float uy1 = charInfo.textureBitmapCoordinates[1].y;
 
         int index = size * 7;
-        vertices[index] = x1;      vertices[index + 1] = y0;
+        vertices[index] = x1;      vertices[index + 1] = y;
         vertices[index + 2] = r;   vertices[index + 3] = g;  vertices[index + 4] = b;
         vertices[index + 5] = ux1; vertices[index + 6] = uy0;
 
@@ -134,12 +129,12 @@ public class FontBatch {
         vertices[index + 5] = ux1; vertices[index + 6] = uy1;
 
         index += 7;
-        vertices[index] = x0;      vertices[index + 1] = y1;
+        vertices[index] = x;      vertices[index + 1] = y1;
         vertices[index + 2] = r;   vertices[index + 3] = g;  vertices[index + 4] = b;
         vertices[index + 5] = ux0; vertices[index + 6] = uy1;
 
         index += 7;
-        vertices[index] = x0;      vertices[index + 1] = y0;
+        vertices[index] = x;      vertices[index + 1] = y;
         vertices[index + 2] = r;   vertices[index + 3] = g;  vertices[index + 4] = b;
         vertices[index + 5] = ux0; vertices[index + 6] = uy0;
 
@@ -154,6 +149,7 @@ public class FontBatch {
 
             addCharacter(x, y, scale, charInfo, rgb);
             x += charInfo.width * scale;
+
         }
     }
 }

@@ -10,10 +10,15 @@ public abstract class GameEditor {
     protected static Camera camera = new Camera(new Vector2f(0,0));
     public List<Entity> entityList = new ArrayList<>();
 
+    private FontBatch batch = new FontBatch();
 
 
 
-
+public void AddTextToScreen(String text, int xpos, int ypos, float scale, int rgbColors){
+    batch.initBatch();
+    batch.addText(text, xpos, ypos, scale, rgbColors);
+    batch.UpdateText();
+}
 
     public void Render(){
         this.renderer.render();

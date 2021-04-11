@@ -2,7 +2,6 @@ package org.easy2dGameEngine.Audio;
 
 import org.lwjgl.BufferUtils;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;
@@ -41,9 +40,8 @@ public class FontRenderer {
         g2d.setFont(font);
         FontMetrics fontMetrics = g2d.getFontMetrics();
 
-        int estimatedWidth = (int)Math.sqrt(font.getNumGlyphs()) * font.getSize() + 1;
         width = 0;
-        height = fontMetrics.getHeight();
+        height = fontMetrics.getHeight() ;
 
         int x = 0;
         int y = (int)(fontMetrics.getHeight() * 1.4f);
@@ -56,11 +54,7 @@ public class FontRenderer {
                 width = Math.max(x + fontMetrics.charWidth(i), width);
 
                 x += charInfo.width;
-                if (x > estimatedWidth) {
-                    x = 0;
-                    y += fontMetrics.getHeight() * 1.4f;
-                    height += fontMetrics.getHeight() * 1.4f;
-                }
+
             }
         }
         height += fontMetrics.getHeight() * 1.4f;
@@ -75,8 +69,8 @@ public class FontRenderer {
         for (int i=0; i < font.getNumGlyphs(); i++) {
             if (font.canDisplay(i)) {
                 CharacterInformationBitMap info = characterMap.get(i);
-                info.CalculateTextureCoords(width, height);
-                g2d.drawString("" + (char)i, info.x, info.y);
+                info.CalculateCoordiantes(width, height);
+                g2d.drawString("" + (char)i, info.x, info.y-6);
             }
         }
         g2d.dispose();
@@ -100,8 +94,8 @@ public class FontRenderer {
                 buffer.put(alphaComponent);
             }
         }
-        buffer.flip();
 
+        buffer.flip();
         textureId = glGenTextures();
 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -109,7 +103,7 @@ public class FontRenderer {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, image.getWidth(), image.getHeight(),
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, image.getWidth(), image.getHeight() ,
                 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
         buffer.clear();
     }

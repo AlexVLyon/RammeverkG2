@@ -27,7 +27,7 @@ get().keyPressed[key] = true;
 
     }
 
-    public static boolean isButtonPressed(int key){
+    public static boolean ButtonPressed(int key){
 
         return get().keyPressed[key];
 
