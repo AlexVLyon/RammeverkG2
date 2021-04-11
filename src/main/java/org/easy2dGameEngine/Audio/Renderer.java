@@ -17,11 +17,16 @@ public class Renderer {
 
     public void add(Entity en){
 
-    SpriteRenderer spriteRenderer = en.GetComponent(SpriteRenderer.class);
+    SpriteRenderer spriteRenderer = en.GetAComponent(SpriteRenderer.class);
 
     add(spriteRenderer);
 
 
+    }
+    public void RemoveEntity(Entity en){
+        SpriteRenderer spriteRenderer = en.GetAComponent(SpriteRenderer.class);
+
+        remove(spriteRenderer);
     }
 
     public void add(SpriteRenderer en){
@@ -44,6 +49,21 @@ public class Renderer {
             batchList.add(newBatch);
             newBatch.addSprite(en);
         }
+    }
+    public void remove(SpriteRenderer en){
+        for(RenderBatch batch : batchList){
+
+            if(batch.hasRoom()){
+
+                batch.removeSprite(en);
+            }
+        }
+    }
+
+    public void Remove(Entity en){
+        SpriteRenderer spriteRenderer = en.GetAComponent(SpriteRenderer.class);
+
+        add(spriteRenderer);
     }
 
     public void render(){

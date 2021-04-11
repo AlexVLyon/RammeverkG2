@@ -14,14 +14,14 @@ public class Entity {
 
 
     String TexturefilePath;
-    Texture tex,te1;
+    Texture tex;
     public Transform Gettransform;
 
 public Entity(String TexturefilePath, int x, int y){
     this.TexturefilePath = TexturefilePath;
     this.Gettransform = new Transform(x,y);
     this.components = new ArrayList<>();
-    AddComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
+    AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
 
 }
 
@@ -34,7 +34,7 @@ public void MoveEntityX(float x){
         this.Gettransform.position.y += y;
     }
 
-    public <T extends Component> T GetComponent(Class<T> componentClass){
+    public <T extends Component> T GetAComponent(Class<T> componentClass){
         for(Component c : components){
             if(componentClass.isAssignableFrom(c.getClass())){
                 try {
@@ -48,7 +48,7 @@ public void MoveEntityX(float x){
         return null;
     }
 
-    public <T extends Component> void RemoveComponent(Class<T> componentClass){
+    public <T extends Component> void RemoveAComponent(Class<T> componentClass){
         for(int i = 0; i < components.size(); i++){
             Component c = components.get(i);
             if(componentClass.isAssignableFrom(c.getClass())){
@@ -58,7 +58,7 @@ public void MoveEntityX(float x){
         }
     }
 
-    public void AddComponent(Component c){
+    public void AddAComponent(Component c){
         components.add(c);
         c.entity = this;
     }

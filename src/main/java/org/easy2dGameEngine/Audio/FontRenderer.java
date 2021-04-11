@@ -23,7 +23,7 @@ public class FontRenderer {
 
         this.fontsize = fontSize;
         this.characterMap = new HashMap<>();
-        generateBitmap();
+        GenerateFontBitmap();
     }
 
     public CharacterInformationBitMap getCharacter(int codepoint) {
@@ -31,7 +31,7 @@ public class FontRenderer {
     }
 
 
-    public void generateBitmap() {
+    public void GenerateFontBitmap() {
         Font font = new Font(filePath, Font.PLAIN, fontsize);
 
         // Create fake image to get font information
@@ -41,7 +41,7 @@ public class FontRenderer {
         FontMetrics fontMetrics = g2d.getFontMetrics();
 
         width = 0;
-        height = fontMetrics.getHeight() ;
+        height = fontMetrics.getHeight();
 
         int x = 0;
         int y = (int)(fontMetrics.getHeight() * 1.4f);

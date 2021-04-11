@@ -5,11 +5,8 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
-import sun.awt.AppContext;
 
-import java.awt.*;
 import java.nio.IntBuffer;
-import java.util.concurrent.TimeUnit;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -90,7 +87,7 @@ private float blue,red,green,alpha;
 
             // Get the window size passed to glfwCreateWindow
             glfwGetWindowSize(window, pWidth, pHeight);
-glfwSetKeyCallback(window,KeyEventListener::invoke);
+glfwSetKeyCallback(window,KeyEventListener::GetScreenKeyEvents);
             // Get the resolution of the primary monitor
             GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 

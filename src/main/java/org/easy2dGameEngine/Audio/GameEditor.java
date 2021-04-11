@@ -12,10 +12,13 @@ public abstract class GameEditor {
 
     private FontBatch batch = new FontBatch();
 
-
+boolean firstime = true;
 
 public void AddTextToScreen(String text, int xpos, int ypos, float scale, int rgbColors){
+if(firstime) {
     batch.initBatch();
+    firstime = false;
+}
     batch.addText(text, xpos, ypos, scale, rgbColors);
     batch.UpdateText();
 }
@@ -38,7 +41,12 @@ this.renderer.add(en);
     public abstract void Update();
     public abstract void init();
 
+public void removeGameObject(Entity add){
+    entityList.remove(add);
+    renderer.RemoveEntity(add);
 
+
+}
     public void AddGameObjectsToScreen(Entity add)
     {
 

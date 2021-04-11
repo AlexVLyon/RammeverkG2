@@ -23,10 +23,10 @@ public class FontBatch {
     public static int VERTEX_SIZE = 7;
     public float[] vertices = new float[BATCH_SIZE * VERTEX_SIZE];
     public int size = 0;
-    private Matrix4f projection = new Matrix4f();
+    private Matrix4f GetShaderprojection = new Matrix4f();
 
-    private int vao;
-    private int vbo;
+    private int vertexarrayid;
+    private int vertexbufferid;
     public FontShader shader;
     public FontRenderer font;
 
@@ -64,14 +64,14 @@ public class FontBatch {
         shader = new FontShader();
         font = new FontRenderer( 22);
 
-        projection.identity();
-        projection.ortho(0, 800, 0, 600, 1f, 100f);
+        GetShaderprojection.identity();
+        GetShaderprojection.ortho(0, 800, 0, 600, 1f, 100f);
 
-        vao = glGenVertexArrays();
-        glBindVertexArray(vao);
+        vertexarrayid = glGenVertexArrays();
+        glBindVertexArray(vertexarrayid);
 
-        vbo = glGenBuffers();
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        vertexbufferid = glGenBuffers();
+        glBindBuffer(GL_ARRAY_BUFFER, vertexbufferid);
         glBufferData(GL_ARRAY_BUFFER, Float.BYTES * VERTEX_SIZE * BATCH_SIZE, GL_DYNAMIC_DRAW);
 
         GenerateElementBuffer();
@@ -84,7 +84,7 @@ public class FontBatch {
     public void UpdateText() {
 
         // Clear the buffer on the GPU, and then upload the CPU contents, and then draw
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, vertexbufferid);
         glBufferData(GL_ARRAY_BUFFER, Float.BYTES * VERTEX_SIZE * BATCH_SIZE, GL_DYNAMIC_DRAW);
         glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
 
@@ -93,9 +93,9 @@ public class FontBatch {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_BUFFER, font.textureId);
         shader.uploadTexture("uFontTexture", 0);
-        shader.uploadMat4f("UProjection", projection);
+        shader.uploadMat4f("UProjection", GetShaderprojection);
 
-        glBindVertexArray(vao);
+        glBindVertexArray(vertexarrayid);
         glDrawElements(GL_TRIANGLES, size * 6, GL_UNSIGNED_INT, 0);
 
 
@@ -105,7 +105,7 @@ public class FontBatch {
     }
 
 
-    public void addCharacter(float x, float y, float scale, CharacterInformationBitMap charInfo, int rgb) {
+    public void addToScreenCharacter(float x, float y, float scale, CharacterInformationBitMap charInfo, int rgb) {
         float r = (float)((rgb >> 16) & 0xFF) / 255.0f;
         float g = (float)((rgb >> 8) & 0xFF) / 255.0f;
         float b = (float)((rgb) & 0xFF) / 255.0f;
@@ -147,7 +147,7 @@ public class FontBatch {
 
             CharacterInformationBitMap charInfo = font.getCharacter(c);
 
-            addCharacter(x, y, scale, charInfo, rgb);
+            addToScreenCharacter(x, y, scale, charInfo, rgb);
             x += charInfo.width * scale;
 
         }

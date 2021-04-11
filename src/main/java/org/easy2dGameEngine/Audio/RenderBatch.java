@@ -86,6 +86,21 @@ public class RenderBatch {
             glEnableVertexAttribArray(3);
         }
     boolean exists = false;
+
+        public void removeSprite(SpriteRenderer spr){
+            if(this.numSprites > 0) {
+                for (int i = 0; i < this.numSprites; i++) {
+                    if (this.sprites[i] == spr) {
+                        this.sprites[i] = null;
+                        this.numSprites--;
+                        textures.remove(spr.getTexture());
+                        break;
+                    }
+                }
+            }
+        }
+
+
         public void addSprite(SpriteRenderer spr) {
 
             int index = this.numSprites;
@@ -133,7 +148,7 @@ if(!exists) {
             shader.use();
             shader.uploadMat4f("uProjection", GameEditor.camera.getProjectionMatrix());
             shader.uploadMat4f("uView", GameEditor.camera.getViewMatrix());
-            for (int i = 0; i < textures.size()-1; i++) {
+            for (int i = 0; i < textures.size(); i++) {
                 glActiveTexture(GL_TEXTURE0 + i +1);
                 textures.get(i).Bind();
             }
@@ -150,7 +165,7 @@ if(!exists) {
             glDisableVertexAttribArray(1);
             glBindVertexArray(0);
 
-            for (int i = 0; i < textures.size()-1; i++) {
+            for (int i = 0; i < textures.size(); i++) {
                 textures.get(i).UnBind();
             }
             shader.detach();
@@ -164,7 +179,7 @@ if(!exists) {
                 int offset = index * 4 * VERTEX_SIZE;
 
                 Vector4f color = sprite.getColor();
-                Vector2f[] texCoords = sprite.getTextCoordin();
+                Vector2f[] texCoord = sprite.getTextCoordin();
 
                 int texId = 1;
                 if (sprite.getTexture() != null) {
@@ -199,8 +214,8 @@ if(!exists) {
                     vertices[offset + 5] = color.w;
 
                     // Load texture coordinates
-                    vertices[offset + 6] = texCoords[i].x;
-                    vertices[offset + 7] = texCoords[i].y;
+                    vertices[offset + 6] = texCoord[i].x;
+                    vertices[offset + 7] = texCoord[i].y;
 
                     // Load texture id
                     vertices[offset + 8] = texId;
@@ -224,8 +239,7 @@ if(!exists) {
             int offsetArrayIndex = 6 * index;
             int offset = 4 * index;
 
-            // 3, 2, 0, 0, 2, 1        7, 6, 4, 4, 6, 5
-            // Triangle 1
+
             elements[offsetArrayIndex] = offset + 3;
             elements[offsetArrayIndex + 1] = offset + 2;
             elements[offsetArrayIndex + 2] = offset + 0;
