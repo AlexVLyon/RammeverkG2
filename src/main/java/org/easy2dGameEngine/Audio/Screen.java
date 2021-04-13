@@ -1,36 +1,46 @@
-package org.easy2dGameEngine;
-
-import Components.SpriteRenderer;
+package org.easy2dGameEngine.Audio;
 
 import org.lwjgl.Version;
-import org.lwjgl.glfw.*;
 import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.opengl.*;
-import org.lwjgl.system.*;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.system.MemoryStack;
 
+import java.io.IOException;
 import java.nio.IntBuffer;
 
-
-import static org.lwjgl.glfw.Callbacks.*;
+import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.system.MemoryStack.*;
-import static org.lwjgl.system.MemoryUtil.*;
+import static org.lwjgl.opengl.GL11C.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.system.MemoryStack.stackPush;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
-public class Screen extends Scene{
+public class Screen {
 private long window;
 private float blue,red,green,alpha;
 
+//set method class
+private GameEditor s;
 
-    EditScene e = new EditScene();
+public void ConnectClassToScreen(GameEditor screenConntector){
+    s = screenConntector;
 
-    public void run() {
+}
+    public void run()  {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
+s.init();
+s.start();
+/*
+        editScene.init();
 
-        e.init();
-        e.start();
+        editScene.start();
 
+
+ */
         loop();
+
+
 
         // Free the window callbacks and destroy the window
         glfwFreeCallbacks(window);
@@ -41,6 +51,9 @@ private float blue,red,green,alpha;
         glfwSetErrorCallback(null).free();
     }
 
+    public Screen(){
+
+    }
 
 
     public void CreateWindow(int width, int height, String title) {
@@ -82,7 +95,7 @@ private float blue,red,green,alpha;
 
             // Get the window size passed to glfwCreateWindow
             glfwGetWindowSize(window, pWidth, pHeight);
-
+glfwSetKeyCallback(window,KeyEventListener::GetScreenKeyEvents);
             // Get the resolution of the primary monitor
             GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
@@ -96,6 +109,8 @@ private float blue,red,green,alpha;
 
         glfwMakeContextCurrent(window);
 
+
+
         // Enable v-sync
         glfwSwapInterval(1);
         // Make the window visible
@@ -105,55 +120,56 @@ private float blue,red,green,alpha;
         GL.createCapabilities();
     }
 
-    private void loop() {
-
-        // This line is critical for LWJGL's interoperation with GLFW's
-        // OpenGL context, or any context that is managed externally.
-        // LWJGL detects the context that is current in the current thread,
-        // creates the GLCapabilities instance and makes the OpenGL
-        // bindings available for use.
-float beginTime = (float)glfwGetTime();
-        float endtime = (float)glfwGetTime();
-        float dt = -1.0f;
 
 
+    private void loop()  {
+glEnable(GL_DEPTH_TEST);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Set the clear color
-        glClearColor(red, green, blue, alpha);
 
+        glDisable(GL_DEPTH_TEST);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+            glClearColor(red, green, blue, alpha);
 
-if(dt >= 0)
-    e.Update(dt);
+            glClear(GL_COLOR_BUFFER_BIT); // clear the framebuffer
+/*
+            editScene.Update();
+            editScene.Render();
+
+ */
+s.Update();
+s.Render();
+
+
+
+
+
 
             glfwSwapBuffers(window); // swap the color buffers
+
 
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();
 
-            endtime = (float)glfwGetTime();
-            dt = endtime - beginTime;
-            beginTime = endtime;
         }
-
 
 
     }
 
-public void WindowColor(float red, float green, float blue, float alpha){
+
+public void ChangeScreenColor(float blue, float red, float green, float alpha){
+        this.blue = blue;
         this.red = red;
         this.green = green;
-        this.blue = blue;
         this.alpha = alpha;
 }
 
 
-    @Override
-    public void Update(float dt) {
-
-    }
 }
