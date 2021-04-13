@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 org/easy2dGameEngine/Audio/BackgroundSound.java
  org.easy2dGameEngine.Audio.BackgroundSound
 org/easy2dGameEngine/Audio/FontBatch.java
@@ -37,54 +36,15 @@ org/easy2dGameEngine/Audio/Texture.java
  org.easy2dGameEngine.Audio.Texture
 org/easy2dGameEngine/Audio/AudioController.java
  org.easy2dGameEngine.Audio.AudioController
-=======
-org/easy2dGameEngine/Component.java
- org.easy2dGameEngine.Component
-org/easy2dGameEngine/Audio/Audio.java
- org.easy2dGameEngine.Audio.Audio
-org/easy2dGameEngine/Transform.java
- org.easy2dGameEngine.Transform
-org/easy2dGameEngine/Renderer.java
- org.easy2dGameEngine.Renderer
-org/easy2dGameEngine/Shader.java
- org.easy2dGameEngine.Shader
-org/easy2dGameEngine/RenderBatch.java
- org.easy2dGameEngine.RenderBatch
-org/easy2dGameEngine/Camera.java
- org.easy2dGameEngine.Camera
-org/easy2dGameEngine/Scene.java
- org.easy2dGameEngine.Scene
-org/easy2dGameEngine/EditScene.java
- org.easy2dGameEngine.EditScene
-org/easy2dGameEngine/Texture.java
- org.easy2dGameEngine.Texture
-org/easy2dGameEngine/Entity.java
- org.easy2dGameEngine.Entity
->>>>>>> parent of 0308f41 (ignore)
 org/easy2dGameEngine/Screen.java
  org.easy2dGameEngine.Screen
+org/easy2dGameEngine/Audio/Utils.java
+ org.easy2dGameEngine.Audio.Utils
 Components/SpriteRenderer.java
  Components.SpriteRenderer
-<<<<<<< HEAD
 org/easy2dGameEngine/Audio/RenderBatch.java
  org.easy2dGameEngine.Audio.RenderBatch
 org/easy2dGameEngine/Audio/Main.java
  org.easy2dGameEngine.Audio.Main
 org/easy2dGameEngine/Audio/EditScene.java
  org.easy2dGameEngine.Audio.EditScene
-=======
-org/easy2dGameEngine/Audio/BackgroundSound.java
- org.easy2dGameEngine.Audio.BackgroundSound
-org/easy2dGameEngine/Main.java
- org.easy2dGameEngine.Main
-org/easy2dGameEngine/Audio/SoundListener.java
- org.easy2dGameEngine.Audio.SoundListener
-org/easy2dGameEngine/Audio/SoundBuffer.java
- org.easy2dGameEngine.Audio.SoundBuffer
-org/easy2dGameEngine/Audio/SoundSource.java
- org.easy2dGameEngine.Audio.SoundSource
-org/easy2dGameEngine/Audio/AudioController.java
- org.easy2dGameEngine.Audio.AudioController
-org/easy2dGameEngine/Audio/Utils.java
- org.easy2dGameEngine.Audio.Utils
->>>>>>> parent of 0308f41 (ignore)
