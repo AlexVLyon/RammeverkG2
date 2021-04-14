@@ -1,6 +1,7 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine.Shaders;
 
 import Components.SpriteRenderer;
+import org.easy2dGameEngine.Entity.Entity;
 
 import java.util.ArrayList;
 import java.util.List;

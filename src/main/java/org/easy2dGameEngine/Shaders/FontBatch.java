@@ -1,6 +1,7 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine.Shaders;
 
 
+import org.easy2dGameEngine.CharacterInformationBitMap;
 import org.joml.Matrix4f;
 
 import static org.lwjgl.opengl.GL15.*;
@@ -88,7 +89,7 @@ public class FontBatch {
         glBufferData(GL_ARRAY_BUFFER, Float.BYTES * VERTEX_SIZE * BATCH_SIZE, GL_DYNAMIC_DRAW);
         glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
 
-        // Draw the buffer that we just uploaded
+        // Draw the buffer that we uploaded
         shader.use();
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_BUFFER, font.textureId);

@@ -1,6 +1,8 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine.Shaders;
 
 import Components.SpriteRenderer;
+import org.easy2dGameEngine.GameEditor;
+import org.easy2dGameEngine.Entity.Texture;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 

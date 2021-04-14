@@ -1,9 +1,13 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine;
 
 
 
 
 
+import org.easy2dGameEngine.Entity.Entity;
+import org.easy2dGameEngine.Shaders.FontBatch;
+import org.easy2dGameEngine.Shaders.Renderer;
+import org.easy2dGameEngine.Window.Camera;
 import org.joml.Vector2f;
 
 
@@ -12,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GameEditor {
-    protected Renderer renderer = new Renderer();
-    protected static Camera camera = new Camera(new Vector2f(0,0));
+    public Renderer renderer = new Renderer();
+    public static Camera camera = new Camera(new Vector2f(0,0));
     public List<Entity> entityList = new ArrayList<>();
 
     private FontBatch batch = new FontBatch();

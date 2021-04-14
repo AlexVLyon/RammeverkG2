@@ -1,12 +1,12 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine;
 
 import org.joml.Vector2f;
 
 public class CharacterInformationBitMap {
-    float x;
-    float y;
-    float width;
-    float height;
+   public float x;
+    public float y;
+    public  float width;
+    public  float height;
 
     public Vector2f[] textureBitmapCoordinates = new Vector2f[4];
 

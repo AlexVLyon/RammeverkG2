@@ -1,4 +1,8 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine;
+
+import org.easy2dGameEngine.EditScene;
+import org.easy2dGameEngine.GameEditor;
+import org.easy2dGameEngine.Window.Screen;
 
 public class Main {
 

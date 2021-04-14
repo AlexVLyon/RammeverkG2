@@ -1,7 +1,7 @@
 package Components;
 
-import org.easy2dGameEngine.Audio.Component;
-import org.easy2dGameEngine.Audio.Texture;
+import org.easy2dGameEngine.Component;
+import org.easy2dGameEngine.Entity.Texture;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 

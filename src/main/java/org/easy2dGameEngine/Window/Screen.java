@@ -1,12 +1,13 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine.Window;
 
+import org.easy2dGameEngine.GameEditor;
+import org.easy2dGameEngine.KeyEventListener;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
-import java.io.IOException;
 import java.nio.IntBuffer;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -95,7 +96,7 @@ s.start();
 
             // Get the window size passed to glfwCreateWindow
             glfwGetWindowSize(window, pWidth, pHeight);
-glfwSetKeyCallback(window,KeyEventListener::GetScreenKeyEvents);
+glfwSetKeyCallback(window, KeyEventListener::GetScreenKeyEvents);
             // Get the resolution of the primary monitor
             GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 

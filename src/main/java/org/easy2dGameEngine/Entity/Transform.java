@@ -1,4 +1,4 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine.Entity;
 
 import org.joml.Vector2f;
 

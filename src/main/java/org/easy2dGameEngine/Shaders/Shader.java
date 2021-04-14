@@ -1,4 +1,4 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine.Shaders;
 
 
 import org.joml.Matrix4f;

@@ -1,6 +1,7 @@
-package org.easy2dGameEngine.Audio;
+package org.easy2dGameEngine.Window;
 
 
+import org.easy2dGameEngine.Entity.Entity;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
