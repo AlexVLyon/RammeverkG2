@@ -18,11 +18,11 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Screen {
-private long window;
-private float blue,red,green,alpha;
+public long window;
+public float blue,red,green,alpha;
 
 //set method class
-private GameEditor s;
+public GameEditor s;
 
 public void ConnectClassToScreen(GameEditor screenConntector){
     s = screenConntector;
@@ -32,13 +32,7 @@ public void ConnectClassToScreen(GameEditor screenConntector){
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
 s.init();
 s.start();
-/*
-        editScene.init();
 
-        editScene.start();
-
-
- */
         loop();
 
 

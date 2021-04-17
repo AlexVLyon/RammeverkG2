@@ -7,7 +7,9 @@ public class KeyEventListener {
 
     private static KeyEventListener keyboardispressed= new KeyEventListener();
 
+static enum  KeyEvents{
 
+    }
 
     private boolean[] keyPressed = new boolean[350];
 

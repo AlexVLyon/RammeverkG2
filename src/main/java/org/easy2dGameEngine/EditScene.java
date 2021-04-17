@@ -47,7 +47,7 @@ public void init(){
             entity1.MoveEntityY(-10);
         }
 
-        AddTextToScreen("This is text on screen ALEX ER NOOB",100,400,1f,	0xAA01BB);
+        AddTextToScreen("This is text on screen ALEX ER NOOB",100,200,1f,	0xAA01BB);
 
 
 

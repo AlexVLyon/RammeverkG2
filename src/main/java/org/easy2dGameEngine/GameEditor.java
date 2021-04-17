@@ -52,12 +52,6 @@ this.renderer.add(en);
     public abstract void Update() ;
     public abstract void init();
 
-public void removeGameObject(Entity add){
-    entityList.remove(add);
-    renderer.RemoveEntity(add);
-
-}
-
 
     public void AddGameObjectsToScreen(Entity add)  {
 
@@ -69,7 +63,7 @@ public void removeGameObject(Entity add){
         this.renderer.add(add);
     }
 
-public Camera getcamera(){
+public Camera GetCamera(){
         return this.camera;
 }
 

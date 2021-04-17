@@ -9,7 +9,7 @@ import org.joml.Vector3f;
 public class Camera {
 
 private Matrix4f projection, viewMatrix;
-public Vector2f Camerapos;
+private Vector2f Camerapos;
 
 public Camera(Vector2f posisjon){
 this.Camerapos = posisjon;
@@ -42,6 +42,11 @@ public void followEntity(Entity entity, int x, int y){
     public Matrix4f getProjectionMatrix(){
     return this.projection;
     }
+
+public void MoveCamera(int x, int y){
+    this.Camerapos.x += x;
+    this.Camerapos.x += y;
+}
 
 
 }

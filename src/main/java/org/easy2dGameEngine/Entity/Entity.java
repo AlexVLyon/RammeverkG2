@@ -2,6 +2,7 @@ package org.easy2dGameEngine.Entity;
 
 import Components.SpriteRenderer;
 import org.easy2dGameEngine.Component;
+import org.joml.Vector2f;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,16 @@ public Entity(String TexturefilePath, int x, int y){
     this.components = new ArrayList<>();
     AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
 
-    if(!InstaniateCpu)
-    AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
-    InstaniateCpu = true;
+    if(!InstaniateCpu) {
+        AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
+        InstaniateCpu = true;
+    }
 }
+    public void AdjustScaling(int Width, int Height)
+    {
+        this.Gettransform.scale = new Vector2f(Width,Height);
+    }
+
 
 
 public Entity(){

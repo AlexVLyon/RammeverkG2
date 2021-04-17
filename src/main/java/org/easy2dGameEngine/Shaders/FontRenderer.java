@@ -1,6 +1,5 @@
 package org.easy2dGameEngine.Shaders;
 
-import org.easy2dGameEngine.CharacterInformationBitMap;
 import org.lwjgl.BufferUtils;
 
 import java.awt.*;

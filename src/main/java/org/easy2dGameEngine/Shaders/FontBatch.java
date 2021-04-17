@@ -1,7 +1,6 @@
 package org.easy2dGameEngine.Shaders;
 
 
-import org.easy2dGameEngine.CharacterInformationBitMap;
 import org.joml.Matrix4f;
 
 import static org.lwjgl.opengl.GL15.*;
@@ -24,7 +23,7 @@ public class FontBatch {
     public static int VERTEX_SIZE = 6;
     public float[] vertices = new float[BATCH_SIZE * VERTEX_SIZE];
     public int size = 0;
-    private Matrix4f GetShaderprojection = new Matrix4f();
+    private Matrix4f projection = new Matrix4f();
 
     private int vertexarrayid;
     private int vertexbufferid;
@@ -62,11 +61,11 @@ public class FontBatch {
 
     public void initBatch() {
 
-        shader = new FontShader();
+        shader = new FontShader("assets/fontShader.glsl");
         font = new FontRenderer( 22);
 
-        GetShaderprojection.identity();
-        GetShaderprojection.ortho(0, 800, 0, 600, 1f, 100f);
+        projection.identity();
+        projection.ortho(0, 800, 0, 600, 1f, 100f);
 
         vertexarrayid = glGenVertexArrays();
         glBindVertexArray(vertexarrayid);
@@ -94,7 +93,7 @@ public class FontBatch {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_BUFFER, font.textureId);
         shader.uploadTexture("uFontTexture", 0);
-        shader.uploadMat4f("UProjection", GetShaderprojection);
+        shader.uploadMat4f("uProjection", projection);
 
         glBindVertexArray(vertexarrayid);
         glDrawElements(GL_TRIANGLES, size * 6, GL_UNSIGNED_INT, 0);
