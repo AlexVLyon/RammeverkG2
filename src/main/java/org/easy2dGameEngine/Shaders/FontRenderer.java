@@ -19,7 +19,7 @@ public class FontRenderer {
     private Map<Integer, CharacterInformationBitMap> characterMap;
     public int textureId;
 
-    public FontRenderer( int fontSize) {
+    public FontRenderer(int fontSize) {
 
         this.fontsize = fontSize;
         this.characterMap = new HashMap<>();
@@ -44,9 +44,9 @@ public class FontRenderer {
         height = fontMetrics.getHeight();
 
         int x = 0;
-        int y = (int)(fontMetrics.getHeight() * 1.4f);
+        int y = (int) (fontMetrics.getHeight() * 1.4f);
 
-        for (int i=0; i < font.getNumGlyphs(); i++) {
+        for (int i = 0; i < font.getNumGlyphs(); i++) {
             if (font.canDisplay(i)) {
                 // Get the sizes for each codepoint glyph, and update the actual image width and height
                 CharacterInformationBitMap charInfo = new CharacterInformationBitMap(x, y, fontMetrics.charWidth(i), fontMetrics.getHeight());
@@ -66,11 +66,11 @@ public class FontRenderer {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setFont(font);
         g2d.setColor(Color.WHITE);
-        for (int i=0; i < font.getNumGlyphs(); i++) {
+        for (int i = 0; i < font.getNumGlyphs(); i++) {
             if (font.canDisplay(i)) {
                 CharacterInformationBitMap info = characterMap.get(i);
                 info.CalculateCoordiantes(width, height);
-                g2d.drawString("" + (char)i, info.x, info.y-5);
+                g2d.drawString("" + (char) i, info.x, info.y - 5);
             }
         }
         g2d.dispose();
@@ -84,10 +84,10 @@ public class FontRenderer {
         image.getRGB(0, 0, image.getWidth(), image.getHeight(), pixels, 0, image.getWidth());
 
         ByteBuffer buffer = BufferUtils.createByteBuffer(image.getWidth() * image.getHeight() * 4);
-        for (int y=0; y < image.getHeight(); y++) {
-            for (int x=0; x < image.getWidth(); x++) {
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
                 int pixel = pixels[y * image.getWidth() + x];
-                byte alphaComponent = (byte)((pixel >> 24) & 0xFF);
+                byte alphaComponent = (byte) ((pixel >> 24) & 0xFF);
                 buffer.put(alphaComponent);
                 buffer.put(alphaComponent);
                 buffer.put(alphaComponent);
@@ -103,7 +103,7 @@ public class FontRenderer {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, image.getWidth(), image.getHeight() ,
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, image.getWidth(), image.getHeight(),
                 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
         buffer.clear();
     }

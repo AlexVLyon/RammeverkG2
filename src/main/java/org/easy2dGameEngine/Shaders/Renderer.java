@@ -11,31 +11,32 @@ public class Renderer {
     private final int MAX_BATCH_SIZE = 1000;
     private List<RenderBatch> batchList;
 
-    public Renderer(){
+    public Renderer() {
         this.batchList = new ArrayList<>();
     }
 
 
-    public void add(Entity en){
+    public void add(Entity en) {
 
-    SpriteRenderer spriteRenderer = en.GetAComponent(SpriteRenderer.class);
+        SpriteRenderer spriteRenderer = en.GetAComponent(SpriteRenderer.class);
 
-    add(spriteRenderer);
+        add(spriteRenderer);
 
 
     }
-    public void RemoveEntity(Entity en){
+
+    public void RemoveEntity(Entity en) {
         SpriteRenderer spriteRenderer = en.GetAComponent(SpriteRenderer.class);
 
         remove(spriteRenderer);
     }
 
-    public void add(SpriteRenderer en){
+    public void add(SpriteRenderer en) {
 
         boolean added = false;
-        for(RenderBatch batch : batchList){
+        for (RenderBatch batch : batchList) {
 
-            if(batch.hasRoom()){
+            if (batch.hasRoom()) {
 
                 batch.addSprite(en);
                 added = true;
@@ -43,7 +44,7 @@ public class Renderer {
                 break;
             }
         }
-        if (!added){
+        if (!added) {
             RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE);
 
             newBatch.start();
@@ -51,24 +52,25 @@ public class Renderer {
             newBatch.addSprite(en);
         }
     }
-    public void remove(SpriteRenderer en){
-        for(RenderBatch batch : batchList){
 
-            if(batch.hasRoom()){
+    public void remove(SpriteRenderer en) {
+        for (RenderBatch batch : batchList) {
+
+            if (batch.hasRoom()) {
 
                 batch.removeSprite(en);
             }
         }
     }
 
-    public void Remove(Entity en){
+    public void Remove(Entity en) {
         SpriteRenderer spriteRenderer = en.GetAComponent(SpriteRenderer.class);
 
         add(spriteRenderer);
     }
 
-    public void render(){
-        for(RenderBatch batch : batchList){
+    public void render() {
+        for (RenderBatch batch : batchList) {
             batch.render();
         }
     }

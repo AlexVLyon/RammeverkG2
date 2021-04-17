@@ -1,7 +1,6 @@
 package org.easy2dGameEngine.Shaders;
 
 
-
 import org.joml.*;
 import org.lwjgl.BufferUtils;
 
@@ -53,7 +52,7 @@ public class FontShader {
             } else {
                 throw new IOException("Unexpected token '" + secondPattern + "'");
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             assert false : "Error: Could not open file for shader: '" + filepath + "'";
         }

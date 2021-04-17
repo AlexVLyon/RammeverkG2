@@ -5,16 +5,16 @@ import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
 public class KeyEventListener {
 
-    private static KeyEventListener keyboardispressed= new KeyEventListener();
+    private static KeyEventListener keyboardispressed = new KeyEventListener();
 
-static enum  KeyEvents{
+    static enum KeyEvents {
 
     }
 
     private boolean[] keyPressed = new boolean[350];
 
     public static void GetScreenKeyEvents(long window, int key, int scancode, int action, int mods) {
-        if ( action == GLFW_PRESS) {
+        if (action == GLFW_PRESS) {
             keyboardispressed.keyPressed[key] = true;
         } else if (action == GLFW_RELEASE) {
             keyboardispressed.keyPressed[key] = false;
@@ -22,15 +22,9 @@ static enum  KeyEvents{
 
     }
 
-    public static boolean ButtonPressed(int key){
+    public static boolean ButtonPressed(int key) {
 
         return keyboardispressed.keyPressed[key];
 
     }
-
-
-
-
-
-
 }

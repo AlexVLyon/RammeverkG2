@@ -9,24 +9,24 @@ public class Transform {
     private int DefaultWidth = 256;
     private int DefaultHeight = 256;
 
-    public Transform(){
+    public Transform() {
         initialize(new Vector2f(), new Vector2f());
     }
 
-    public Transform(int x, int y){
+    public Transform(int x, int y) {
 
-        initialize(new Vector2f(x,y), new Vector2f(DefaultWidth,DefaultHeight));
+        initialize(new Vector2f(x, y), new Vector2f(DefaultWidth, DefaultHeight));
     }
 
-    public void initialize(Vector2f position, Vector2f scale){
+    public void initialize(Vector2f position, Vector2f scale) {
         this.position = position;
         this.scale = scale;
 
     }
 
 
-    public void AdjustScale(int Width, int Height){
-        this.scale = new Vector2f(Width,Height);
+    public void AdjustScale(int Width, int Height) {
+        this.scale = new Vector2f(Width, Height);
     }
 
 }

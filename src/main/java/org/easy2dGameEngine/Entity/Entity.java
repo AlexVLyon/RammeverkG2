@@ -19,43 +19,42 @@ public class Entity {
     Texture tex;
     public Transform Gettransform;
 
-public Entity(String TexturefilePath, int x, int y){
-    this.TexturefilePath = TexturefilePath;
-    this.Gettransform = new Transform(x,y);
-    this.components = new ArrayList<>();
-    AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
-
-    if(!InstaniateCpu) {
+    public Entity(String TexturefilePath, int x, int y) {
+        this.TexturefilePath = TexturefilePath;
+        this.Gettransform = new Transform(x, y);
+        this.components = new ArrayList<>();
         AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
-        InstaniateCpu = true;
+
+        if (!InstaniateCpu) {
+            AddAComponent(new SpriteRenderer(tex = new Texture(TexturefilePath)));
+            InstaniateCpu = true;
+        }
     }
-}
-    public void AdjustScaling(int Width, int Height)
-    {
-        this.Gettransform.scale = new Vector2f(Width,Height);
+
+    public void AdjustScaling(int Width, int Height) {
+        this.Gettransform.scale = new Vector2f(Width, Height);
     }
 
 
+    public Entity() {
+        AddAComponent(new SpriteRenderer(tex = new Texture("")));
+    }
 
-public Entity(){
-    AddAComponent(new SpriteRenderer(tex = new Texture("")));
-}
+    public void MoveEntityX(float x) {
+        this.Gettransform.position.x += x;
 
-public void MoveEntityX(float x){
-    this.Gettransform.position.x += x;
+    }
 
-}
-
-    public void MoveEntityY(float y){
+    public void MoveEntityY(float y) {
         this.Gettransform.position.y += y;
     }
 
-    public <T extends Component> T GetAComponent(Class<T> componentClass){
-        for(Component c : components){
-            if(componentClass.isAssignableFrom(c.getClass())){
+    public <T extends Component> T GetAComponent(Class<T> componentClass) {
+        for (Component c : components) {
+            if (componentClass.isAssignableFrom(c.getClass())) {
                 try {
                     return componentClass.cast(c);
-                }catch (ClassCastException e){
+                } catch (ClassCastException e) {
                     e.printStackTrace();
                     assert false : "Error: Casting component";
                 }
@@ -64,36 +63,36 @@ public void MoveEntityX(float x){
         return null;
     }
 
-    public <T extends Component> void RemoveAComponent(Class<T> componentClass){
-        for(int i = 0; i < components.size(); i++){
+    public <T extends Component> void RemoveAComponent(Class<T> componentClass) {
+        for (int i = 0; i < components.size(); i++) {
             Component c = components.get(i);
-            if(componentClass.isAssignableFrom(c.getClass())){
+            if (componentClass.isAssignableFrom(c.getClass())) {
                 components.remove(i);
                 return;
             }
         }
     }
 
-    public void AddAComponent(Component c){
+    public void AddAComponent(Component c) {
         components.add(c);
         c.entity = this;
     }
 
-    public void Start(){
-        for(int i = 0; i < components.size(); i++){
+    public void Start() {
+        for (int i = 0; i < components.size(); i++) {
             components.get(i).Start();
         }
     }
 
-public void flip(){
-    stbi_set_flip_vertically_on_load(true);
+    public void flip() {
+        stbi_set_flip_vertically_on_load(true);
 
-}
+    }
 
 
-    public boolean Collision(Entity entityCollision){
-        if(entityCollision.Gettransform.position.x+20 >= this.Gettransform.position.x  && entityCollision.Gettransform.position.x <= this.Gettransform.position.x+ 20 &&
-                entityCollision.Gettransform.position.y+20 >= this.Gettransform.position.y &&  entityCollision.Gettransform.position.y <= this.Gettransform.position.y+ 20){
+    public boolean Collision(Entity entityCollision) {
+        if (entityCollision.Gettransform.position.x + 20 >= this.Gettransform.position.x && entityCollision.Gettransform.position.x <= this.Gettransform.position.x + 20 &&
+                entityCollision.Gettransform.position.y + 20 >= this.Gettransform.position.y && entityCollision.Gettransform.position.y <= this.Gettransform.position.y + 20) {
             System.out.println("collision happening");
             return true;
         }

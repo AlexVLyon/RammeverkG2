@@ -31,13 +31,11 @@ public class FontBatch {
     public FontRenderer font;
 
 
-
-
     void GenerateElementBuffer() {
         int elementSize = BATCH_SIZE * 3;
         int[] elementBuffer = new int[elementSize];
 
-        for (int i=0; i < elementSize; i++) {
+        for (int i = 0; i < elementSize; i++) {
             elementBuffer[i] = indices[(i % 6)] + ((i / 6) * 4);
         }
 
@@ -45,7 +43,8 @@ public class FontBatch {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, elementBuffer, GL_STATIC_DRAW);
     }
-    void GenerateShaderPointers(){
+
+    void GenerateShaderPointers() {
         int stride = 7 * Float.BYTES;
         glVertexAttribPointer(4, 2, GL_FLOAT, false, stride, 0);
         glEnableVertexAttribArray(4);
@@ -58,11 +57,10 @@ public class FontBatch {
     }
 
 
-
     public void initBatch() {
 
         shader = new FontShader("assets/fontShader.glsl");
-        font = new FontRenderer( 22);
+        font = new FontRenderer(22);
 
         projection.identity();
         projection.ortho(0, 800, 0, 600, 1f, 100f);
@@ -76,9 +74,8 @@ public class FontBatch {
 
         GenerateElementBuffer();
 
-      GenerateShaderPointers();
+        GenerateShaderPointers();
     }
-
 
 
     public void UpdateText() {
@@ -106,43 +103,60 @@ public class FontBatch {
 
 
     public void addToScreenCharacter(float x, float y, float scale, CharacterInformationBitMap charInfo, int rgb) {
-        float r = (float)((rgb >> 16) & 0xFF) / 255.0f;
-        float g = (float)((rgb >> 8) & 0xFF) / 255.0f;
-        float b = (float)((rgb) & 0xFF) / 255.0f;
-
+        float r = (float) ((rgb >> 16) & 0xFF) / 255.0f;
+        float g = (float) ((rgb >> 8) & 0xFF) / 255.0f;
+        float b = (float) ((rgb) & 0xFF) / 255.0f;
 
 
         float x1 = x + scale * charInfo.width;
         float y1 = y + scale * charInfo.height;
 
-        float ux0 = charInfo.textureBitmapCoordinates[0].x; float uy0 = charInfo.textureBitmapCoordinates[0].y;
-        float ux1 = charInfo.textureBitmapCoordinates[1].x; float uy1 = charInfo.textureBitmapCoordinates[1].y;
+        float ux0 = charInfo.textureBitmapCoordinates[0].x;
+        float uy0 = charInfo.textureBitmapCoordinates[0].y;
+        float ux1 = charInfo.textureBitmapCoordinates[1].x;
+        float uy1 = charInfo.textureBitmapCoordinates[1].y;
 
         int index = size * 7;
-        vertices[index] = x1;      vertices[index + 1] = y;
-        vertices[index + 2] = r;   vertices[index + 3] = g;  vertices[index + 4] = b;
-        vertices[index + 5] = ux1; vertices[index + 6] = uy0;
+        vertices[index] = x1;
+        vertices[index + 1] = y;
+        vertices[index + 2] = r;
+        vertices[index + 3] = g;
+        vertices[index + 4] = b;
+        vertices[index + 5] = ux1;
+        vertices[index + 6] = uy0;
 
         index += 7;
-        vertices[index] = x1;      vertices[index + 1] = y1;
-        vertices[index + 2] = r;   vertices[index + 3] = g;  vertices[index + 4] = b;
-        vertices[index + 5] = ux1; vertices[index + 6] = uy1;
+        vertices[index] = x1;
+        vertices[index + 1] = y1;
+        vertices[index + 2] = r;
+        vertices[index + 3] = g;
+        vertices[index + 4] = b;
+        vertices[index + 5] = ux1;
+        vertices[index + 6] = uy1;
 
         index += 7;
-        vertices[index] = x;      vertices[index + 1] = y1;
-        vertices[index + 2] = r;   vertices[index + 3] = g;  vertices[index + 4] = b;
-        vertices[index + 5] = ux0; vertices[index + 6] = uy1;
+        vertices[index] = x;
+        vertices[index + 1] = y1;
+        vertices[index + 2] = r;
+        vertices[index + 3] = g;
+        vertices[index + 4] = b;
+        vertices[index + 5] = ux0;
+        vertices[index + 6] = uy1;
 
         index += 7;
-        vertices[index] = x;      vertices[index + 1] = y;
-        vertices[index + 2] = r;   vertices[index + 3] = g;  vertices[index + 4] = b;
-        vertices[index + 5] = ux0; vertices[index + 6] = uy0;
+        vertices[index] = x;
+        vertices[index + 1] = y;
+        vertices[index + 2] = r;
+        vertices[index + 3] = g;
+        vertices[index + 4] = b;
+        vertices[index + 5] = ux0;
+        vertices[index + 6] = uy0;
 
         size += 4;
     }
 
     public void addText(String text, int x, int y, float scale, int rgb) {
-        for (int i=0; i < text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
 
             CharacterInformationBitMap charInfo = font.getCharacter(c);

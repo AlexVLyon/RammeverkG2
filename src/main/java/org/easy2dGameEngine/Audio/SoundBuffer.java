@@ -1,12 +1,19 @@
 package org.easy2dGameEngine.Audio;
+
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
+
 import static org.lwjgl.openal.AL10.*;
+
 import org.lwjgl.stb.STBVorbisInfo;
+
 import java.nio.ShortBuffer;
+
 import static org.lwjgl.stb.STBVorbis.*;
+
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
+
 import static org.lwjgl.system.MemoryUtil.*;
 
 public class SoundBuffer {

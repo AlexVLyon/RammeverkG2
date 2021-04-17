@@ -18,24 +18,22 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Screen {
-public long window;
-public float blue,red,green,alpha;
+    public long window;
+    public float blue,red,green,alpha;
 
-//set method class
-public GameEditor s;
+    //set method class
+    public GameEditor s;
 
-public void ConnectClassToScreen(GameEditor screenConntector){
-    s = screenConntector;
+    public void ConnectClassToScreen(GameEditor screenConntector){
+        s = screenConntector;
 
-}
+    }
     public void run()  {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
-s.init();
-s.start();
+        s.init();
+        s.start();
 
         loop();
-
-
 
         // Free the window callbacks and destroy the window
         glfwFreeCallbacks(window);
@@ -49,7 +47,6 @@ s.start();
     public Screen(){
 
     }
-
 
     public void CreateWindow(int width, int height, String title) {
 
@@ -80,9 +77,6 @@ s.start();
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
         });
 
-
-
-
         // Get the thread stack and push a new frame
         try ( MemoryStack stack = stackPush() ) {
             IntBuffer pWidth = stack.mallocInt(1); // int*
@@ -90,7 +84,7 @@ s.start();
 
             // Get the window size passed to glfwCreateWindow
             glfwGetWindowSize(window, pWidth, pHeight);
-glfwSetKeyCallback(window, KeyEventListener::GetScreenKeyEvents);
+            glfwSetKeyCallback(window, KeyEventListener::GetScreenKeyEvents);
             // Get the resolution of the primary monitor
             GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
@@ -100,11 +94,11 @@ glfwSetKeyCallback(window, KeyEventListener::GetScreenKeyEvents);
                     (vidmode.width() - pWidth.get(0)) / 2,
                     (vidmode.height() - pHeight.get(0)) / 2
             );
-        } // the stack frame is popped automatically
+        }
+
+        // the stack frame is popped automatically
 
         glfwMakeContextCurrent(window);
-
-
 
         // Enable v-sync
         glfwSwapInterval(1);
@@ -118,7 +112,7 @@ glfwSetKeyCallback(window, KeyEventListener::GetScreenKeyEvents);
 
 
     private void loop()  {
-glEnable(GL_DEPTH_TEST);
+        glEnable(GL_DEPTH_TEST);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
@@ -133,38 +127,27 @@ glEnable(GL_DEPTH_TEST);
             glClearColor(red, green, blue, alpha);
 
             glClear(GL_COLOR_BUFFER_BIT); // clear the framebuffer
-/*
-            editScene.Update();
-            editScene.Render();
+            /*
+                editScene.Update();
+                editScene.Render();
+            */
 
- */
-s.Update();
-s.Render();
-
-
-
-
-
+            s.Update();
+            s.Render();
 
             glfwSwapBuffers(window); // swap the color buffers
-
 
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();
-
         }
-
-
     }
 
 
-public void ChangeScreenColor(float blue, float red, float green, float alpha){
-        this.blue = blue;
-        this.red = red;
-        this.green = green;
-        this.alpha = alpha;
-}
-
-
+    public void ChangeScreenColor(float blue, float red, float green, float alpha){
+            this.blue = blue;
+            this.red = red;
+            this.green = green;
+            this.alpha = alpha;
+    }
 }
