@@ -1,12 +1,10 @@
 package org.easy2dGameEngine;
 
-
 import org.easy2dGameEngine.Entity.Entity;
 import org.easy2dGameEngine.Shaders.FontBatch;
 import org.easy2dGameEngine.Shaders.Renderer;
 import org.easy2dGameEngine.Window.Camera;
 import org.joml.Vector2f;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,6 @@ public abstract class GameEditor {
 
     public void AddTextToScreen(String text, int xpos, int ypos, float scale, int rgbColors) {
         if (firstime) {
-
             batch.initBatch();
             firstime = false;
         }
@@ -41,18 +38,13 @@ public abstract class GameEditor {
             this.renderer.add(en);
             this.renderer.render();
         }
-
-
     }
 
     public abstract void Update();
 
     public abstract void init();
 
-
     public void AddGameObjectsToScreen(Entity add) {
-
-
         entityList.add(add);
         add.Start();
         this.renderer.add(add);
@@ -61,5 +53,4 @@ public abstract class GameEditor {
     public Camera GetCamera() {
         return this.camera;
     }
-
 }

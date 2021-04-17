@@ -242,7 +242,6 @@ public class RenderBatch {
         int offsetArrayIndex = 6 * index;
         int offset = 4 * index;
 
-
         elements[offsetArrayIndex] = offset + 3;
         elements[offsetArrayIndex + 1] = offset + 2;
         elements[offsetArrayIndex + 2] = offset + 0;

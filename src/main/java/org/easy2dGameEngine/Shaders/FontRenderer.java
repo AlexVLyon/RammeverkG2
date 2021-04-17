@@ -20,7 +20,6 @@ public class FontRenderer {
     public int textureId;
 
     public FontRenderer(int fontSize) {
-
         this.fontsize = fontSize;
         this.characterMap = new HashMap<>();
         GenerateFontBitmap();
@@ -29,7 +28,6 @@ public class FontRenderer {
     public CharacterInformationBitMap getCharacter(int codepoint) {
         return characterMap.getOrDefault(codepoint, new CharacterInformationBitMap(0, 0, 0, 0));
     }
-
 
     public void GenerateFontBitmap() {
         Font font = new Font(filePath, Font.PLAIN, fontsize);
@@ -54,7 +52,6 @@ public class FontRenderer {
                 width = Math.max(x + fontMetrics.charWidth(i), width);
 
                 x += charInfo.width;
-
             }
         }
         height += fontMetrics.getHeight() * 1.4f;

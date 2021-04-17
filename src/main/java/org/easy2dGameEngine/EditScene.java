@@ -33,10 +33,9 @@ public class EditScene extends GameEditor {
         if (KeyEventListener.ButtonPressed(GLFW_KEY_W))
             entity1.MoveEntityY(10);
         if (KeyEventListener.ButtonPressed(GLFW_KEY_S)) {
-
             entity1.MoveEntityY(-10);
         }
 
-        AddTextToScreen("This is text on screen ALEX ER NOOB", 100, 200, 1f, 0xAA01BB);
+        AddTextToScreen("This is text on screen", 100, 200, 1f, 0xAA01BB);
     }
 }

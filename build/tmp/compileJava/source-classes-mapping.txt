@@ -1,11 +1,11 @@
 org/easy2dGameEngine/Audio/BackgroundSound.java
  org.easy2dGameEngine.Audio.BackgroundSound
-Components/SpriteRenderer.java
- Components.SpriteRenderer
 org/easy2dGameEngine/GameEditor.java
  org.easy2dGameEngine.GameEditor
-org/easy2dGameEngine/Shaders/Shader.java
- org.easy2dGameEngine.Shaders.Shader
+org/easy2dGameEngine/Main.java
+ org.easy2dGameEngine.Main
+org/easy2dGameEngine/Shaders/FontBatch.java
+ org.easy2dGameEngine.Shaders.FontBatch
 org/easy2dGameEngine/aShader.java
  org.easy2dGameEngine.aShader
 org/easy2dGameEngine/Audio/SoundListener.java
@@ -29,8 +29,8 @@ org/easy2dGameEngine/KeyEventListener.java
  org.easy2dGameEngine.KeyEventListener$KeyEvents
 org/easy2dGameEngine/Shaders/FontShader.java
  org.easy2dGameEngine.Shaders.FontShader
-org/easy2dGameEngine/Shaders/FontBatch.java
- org.easy2dGameEngine.Shaders.FontBatch
+org/easy2dGameEngine/EditScene.java
+ org.easy2dGameEngine.EditScene
 org/easy2dGameEngine/Audio/SoundBuffer.java
  org.easy2dGameEngine.Audio.SoundBuffer
 org/easy2dGameEngine/Audio/SoundSource.java
@@ -45,7 +45,7 @@ org/easy2dGameEngine/Audio/Utils.java
  org.easy2dGameEngine.Audio.Utils
 org/easy2dGameEngine/Shaders/Renderer.java
  org.easy2dGameEngine.Shaders.Renderer
-org/easy2dGameEngine/EditScene.java
- org.easy2dGameEngine.EditScene
-org/easy2dGameEngine/Main.java
- org.easy2dGameEngine.Main
+org/easy2dGameEngine/Shaders/Shader.java
+ org.easy2dGameEngine.Shaders.Shader
+Components/SpriteRenderer.java
+ Components.SpriteRenderer
