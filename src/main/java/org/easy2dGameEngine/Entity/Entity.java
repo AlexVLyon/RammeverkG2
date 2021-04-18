@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.lwjgl.stb.STBImage.stbi_set_flip_vertically_on_load;
 
-public class Entity {
+public abstract class Entity {
     // Location
     public List<Component> components;
     boolean InstaniateCpu = false;

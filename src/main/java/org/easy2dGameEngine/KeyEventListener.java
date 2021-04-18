@@ -1,15 +1,44 @@
 package org.easy2dGameEngine;
 
-import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
-import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
+import org.lwjgl.glfw.GLFW;
+
+import static org.lwjgl.glfw.GLFW.*;
 
 public class KeyEventListener {
 
     private static KeyEventListener keyboardispressed = new KeyEventListener();
 
-    static enum KeyEvents {
+     enum KeyEvents {
+         A,
+         B,
+         C,
+         D,
+         E,
+         F,
+         G,
+         H,
+         I,
+         J,
+         K,
+         L,
+         M,
+         N,
+         O,
+         P,
+         Q,
+         R,
+         S,
+         T,
+         U,
+         V,
+         W,
+         X,
+         Y,
+         Z,
+         SPACE,
 
     }
+
 
     private boolean[] keyPressed = new boolean[350];
 
@@ -22,9 +51,13 @@ public class KeyEventListener {
 
     }
 
-    public static boolean ButtonPressed(int key) {
+    public static boolean ButtonPressed(KeyEvents key) {
+        //spacebar
+if(key.ordinal() == 25)
+    return keyboardispressed.keyPressed[32];
 
-        return keyboardispressed.keyPressed[key];
+            return keyboardispressed.keyPressed[key.ordinal() + 65];
+
 
     }
 }
