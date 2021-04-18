@@ -1,7 +1,8 @@
 package org.easy2dGameEngine.Entity;
 
 public class GameObject extends Entity {
-    private int hp,attack,defence,name;
+    private int hp,attack,defence;
+    private String name;
 
 
     public GameObject(String file, int x, int y){
@@ -58,11 +59,11 @@ public void MoveGameObjectY(int y){
         this.defence = defence;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
