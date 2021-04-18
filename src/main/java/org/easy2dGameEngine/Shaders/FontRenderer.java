@@ -75,7 +75,7 @@ public class FontRenderer {
             if (font.canDisplay(i)) {
                 CharacterInformationBitMap info = characterMap.get(i);
                 info.CalculateCoordiantes(width, height);
-                g2d.drawString("" + (char)i, info.x, info.y);
+                g2d.drawString("" + (char)i, info.x, info.y-5);
             }
         }
         g2d.dispose();
@@ -84,7 +84,7 @@ public class FontRenderer {
     }
 
     private void uploadTexture(BufferedImage image) {
-        // Taken from https://stackoverflow.com/questions/10801016/lwjgl-textures-and-strings
+
 
         int[] pixels = new int[image.getHeight() * image.getWidth()];
         image.getRGB(0, 0, image.getWidth(), image.getHeight(), pixels, 0, image.getWidth());

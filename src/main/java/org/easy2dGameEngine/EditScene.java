@@ -36,6 +36,6 @@ public class EditScene extends GameEditor {
             entity1.MoveEntityY(-10);
         }
 
-        AddTextToScreen("This is text on screen", 100, 200, 1f, 0xAA01BB);
+        AddTextToScreen("This is text on screen J", 100, 500, 1f, 0xAA01BB);
     }
 }
