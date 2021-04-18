@@ -17,45 +17,41 @@ public class FontShader {
     private int shaderProgramID;
     private boolean beingUsed = false;
 
-    private String vertexSource;
-    private String fragmentSource;
+    private String vertexSource = "#version 330 core\n" +
+            "layout(location=4) in vec2 aPos;\n" +
+            "layout(location=5) in vec3 aColor;\n" +
+            "layout(location=6) in vec2 aTexCoords;\n" +
+            "\n" +
+            "out vec2 fTexCoords;\n" +
+            "out vec3 fColor;\n" +
+            "\n" +
+            "uniform mat4 uProjection;\n" +
+            "\n" +
+            "void main()\n" +
+            "{\n" +
+            "    fTexCoords = aTexCoords;\n" +
+            "    fColor = aColor;\n" +
+            "    gl_Position = uProjection * vec4(aPos, -5, 1);\n" +
+            "}";
+    private String fragmentSource = " #version 330 core\n" +
+            "\n" +
+            "in vec2 fTexCoords;\n" +
+            "in vec3 fColor;\n" +
+            "\n" +
+            "uniform sampler2D uFontTexture;\n" +
+            "\n" +
+            "out vec4 color;\n" +
+            "\n" +
+            "void main()\n" +
+            "{\n" +
+            "    float c = texture(uFontTexture, fTexCoords).r;\n" +
+            "    color = vec4(1, 1, 1, c) * vec4(fColor, 1);\n" +
+            "}\n" +
+            "\n";
     private String filepath;
 
-    public FontShader(String filepath) {
-        this.filepath = filepath;
-        try {
-            String source = new String(Files.readAllBytes(Paths.get(filepath)));
-            String[] splitString = source.split("(#type)( )+([a-zA-Z]+)");
+    public FontShader() {
 
-            // Find the first pattern after #type 'pattern'
-            int index = source.indexOf("#type") + 6;
-            int eol = source.indexOf("\r\n", index);
-            String firstPattern = source.substring(index, eol).trim();
-
-            // Find the second pattern after #type 'pattern'
-            index = source.indexOf("#type", eol) + 6;
-            eol = source.indexOf("\r\n", index);
-            String secondPattern = source.substring(index, eol).trim();
-
-            if (firstPattern.equals("vertex")) {
-                vertexSource = splitString[1];
-            } else if (firstPattern.equals("fragment")) {
-                fragmentSource = splitString[1];
-            } else {
-                throw new IOException("Unexpected token '" + firstPattern + "'");
-            }
-
-            if (secondPattern.equals("vertex")) {
-                vertexSource = splitString[2];
-            } else if (secondPattern.equals("fragment")) {
-                fragmentSource = splitString[2];
-            } else {
-                throw new IOException("Unexpected token '" + secondPattern + "'");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            assert false : "Error: Could not open file for shader: '" + filepath + "'";
-        }
 
         compile();
     }
