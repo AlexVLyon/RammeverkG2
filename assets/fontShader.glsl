@@ -31,3 +31,4 @@ void main()
     float c = texture(uFontTexture, fTexCoords).r;
     color = vec4(1, 1, 1, c) * vec4(fColor, 1);
 }
+

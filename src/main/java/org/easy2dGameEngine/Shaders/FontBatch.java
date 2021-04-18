@@ -60,7 +60,7 @@ public class FontBatch {
     public void initBatch() {
 
         shader = new FontShader("assets/fontShader.glsl");
-        font = new FontRenderer(22);
+        font = new FontRenderer("",22);
 
         projection.identity();
         projection.ortho(0, 800, 0, 600, 1f, 100f);

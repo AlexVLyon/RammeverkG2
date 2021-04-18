@@ -23,6 +23,7 @@ public abstract class GameEditor {
             batch.initBatch();
             firstime = false;
         }
+
         batch.addText(text, xpos, ypos, scale, rgbColors);
         batch.UpdateText();
     }
