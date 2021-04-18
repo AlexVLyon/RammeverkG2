@@ -55,11 +55,8 @@ public class Renderer {
 
     public void remove(SpriteRenderer en) {
         for (RenderBatch batch : batchList) {
-
-            if (batch.hasRoom()) {
-
                 batch.removeSprite(en);
-            }
+
         }
     }
 

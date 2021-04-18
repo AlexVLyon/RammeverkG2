@@ -91,16 +91,16 @@ public class RenderBatch {
     boolean exists = false;
 
     public void removeSprite(SpriteRenderer spr) {
-        if (this.numSprites > 0) {
+
             for (int i = 0; i < this.numSprites; i++) {
                 if (this.sprites[i] == spr) {
+                    textures.remove(spr.getTexture());
                     this.sprites[i] = null;
                     this.numSprites--;
-                    textures.remove(spr.getTexture());
                     break;
                 }
             }
-        }
+
     }
 
 

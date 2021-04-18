@@ -9,29 +9,25 @@ public class GameObject extends Entity {
         super(file,x,y);
     }
 
-public void MoveGameObjectX(int x){
-        MoveEntityX(x);
-}
-
-public void MoveGameObjectY(int y){
-        MoveEntityY(y);
-    }
 
 
 
     public void DamageGameObject(GameObject gameObject){
-
+int gethp =  gameObject.getHp();
         int damageReceived = getAttack() - gameObject.defence;
-        if (damageReceived <= 0)
-        gameObject.hp -=  0;
-        else
-            gameObject.hp -= damageReceived;
+        if (damageReceived >= 0)
+           gethp -= damageReceived;
+
+        gameObject.setHp(gethp);
     }
 
+
     public boolean Dead(){
-        if(this.hp <= 0)
+        if(this.hp <= 0) {
+            System.out.println("Dead");
             return true;
 
+        }
         return false;
     }
 

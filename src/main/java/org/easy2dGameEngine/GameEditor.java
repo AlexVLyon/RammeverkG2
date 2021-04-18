@@ -50,6 +50,10 @@ public abstract class GameEditor {
         add.Start();
         this.renderer.add(add);
     }
+    public void RemoveGameObjectFromScreen(Entity add){
+        entityList.remove(add);
+        renderer.RemoveEntity(add);
+    }
 
     public Camera GetCamera() {
         return this.camera;

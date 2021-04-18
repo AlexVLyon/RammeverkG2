@@ -20,6 +20,7 @@ public abstract class Entity {
     public Transform Gettransform;
 
     public Entity(String TexturefilePath, int x, int y) {
+
         this.TexturefilePath = TexturefilePath;
         this.Gettransform = new Transform(x, y);
         this.components = new ArrayList<>();
@@ -47,6 +48,22 @@ public abstract class Entity {
 
     public void MoveEntityY(float y) {
         this.Gettransform.position.y += y;
+    }
+
+    public void setXpos(int x){
+        this.Gettransform.position.x = x;
+    }
+
+    public void setYpos(int y){
+        this.Gettransform.position.y = y;
+    }
+
+    public int getXPos(){
+        return (int)this.Gettransform.position.x;
+    }
+
+    public int getYPos(){
+        return (int)this.Gettransform.position.y;
     }
 
     public <T extends Component> T GetAComponent(Class<T> componentClass) {

@@ -11,6 +11,7 @@ public class Main {
         s.CreateWindow(1000, 1000, "tt");
         s.ChangeScreenColor(1, 1, 1, 1);
         GameEditor a = new EditScene();
+
         s.ConnectClassToScreen(a);
         s.run();
     }
