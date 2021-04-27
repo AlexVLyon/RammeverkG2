@@ -1,7 +1,6 @@
 package org.easy2dGameEngine.Window;
 
-import org.easy2dGameEngine.GameEditor;
-import org.easy2dGameEngine.KeyEventListener;
+import org.easy2dGameEngine.ScreenAndTextureUpload.GameEditor;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
