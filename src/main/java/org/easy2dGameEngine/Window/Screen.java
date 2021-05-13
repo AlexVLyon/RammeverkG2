@@ -1,7 +1,6 @@
 package org.easy2dGameEngine.Window;
 
 import org.easy2dGameEngine.ScreenAndTextureUpload.GameEditor;
-import org.easy2dGameEngine.Window.KeyEventListener;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
@@ -18,20 +17,20 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Screen {
-    public long window;
-    public float blue,red,green,alpha;
+    private long window;
+    private float blue,red,green,alpha;
 
     //set method class
-    public GameEditor s;
+    private GameEditor gameEditor;
 
     public void ConnectClassToScreen(GameEditor screenConntector){
-        s = screenConntector;
+        gameEditor = screenConntector;
 
     }
     public void run()  {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
-        s.init();
-        s.start();
+        gameEditor.init();
+        gameEditor.start();
 
         loop();
 
@@ -132,8 +131,8 @@ public class Screen {
                 editScene.Render();
             */
 
-            s.Update();
-            s.Render();
+            gameEditor.Update();
+            gameEditor.Render();
 
             glfwSwapBuffers(window); // swap the color buffers
 
