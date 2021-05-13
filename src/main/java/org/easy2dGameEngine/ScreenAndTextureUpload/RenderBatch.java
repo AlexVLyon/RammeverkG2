@@ -146,8 +146,8 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
         // Use shader
         shader.use();
-        shader.uploadMat4f("uProjection", GameEditor.camera.getProjectionMatrix());
-        shader.uploadMat4f("uView", GameEditor.camera.getViewMatrix());
+        shader.uploadMat4f("uProjection", GameEditor.GetCamera().getProjectionMatrix());
+        shader.uploadMat4f("uView", GameEditor.GetCamera().getViewMatrix());
         for (int i = 0; i < textures.size(); i++) {
             glActiveTexture(GL_TEXTURE0 + i + 1);
             textures.get(i).Bind();

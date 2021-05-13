@@ -39,12 +39,12 @@ public class EditScene extends GameEditor {
 
         AddGameObjectsToScreen(test);
         AddGameObjectsToScreen(test2);
-
-if(test2.Collision(test)) {
-   test.setXpos(returnRandomintX());
-    test.setYpos(returnRandomintY());
-    truff++;
-}
+GetCamera().followEntity(test2,100,-400);
+        if(test2.Collision(test)) {
+                test.setXpos(returnRandomintX());
+                test.setYpos(returnRandomintY());
+                truff++;
+        }
 
         if (KeyEventListener.ButtonPressed(KeyEventListener.KeyEvents.D))
            test.MoveEntityX(10);

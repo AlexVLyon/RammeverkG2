@@ -94,7 +94,7 @@ public abstract class Entity {
         c.entity = this;
     }
 
-    protected void Start() {
+    public void Start() {
         for (int i = 0; i < components.size(); i++) {
             components.get(i).Start();
         }

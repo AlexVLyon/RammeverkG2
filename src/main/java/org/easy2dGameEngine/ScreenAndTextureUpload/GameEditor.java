@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GameEditor {
-    public Renderer renderer = new Renderer();
-    public static Camera camera = new Camera(new Vector2f(0, 0));
-    public List<Entity> entityList = new ArrayList<>();
+    private Renderer renderer = new Renderer();
+    private static Camera camera = new Camera(new Vector2f(0, 0));
+    private List<Entity> entityList = new ArrayList<>();
 
     private FontBatch batch = new FontBatch();
 
@@ -32,7 +32,6 @@ public abstract class GameEditor {
 
     public void start() {
         for (Entity en : entityList) {
-            en.Start();
             this.renderer.add(en);
             this.renderer.render();
         }
@@ -46,13 +45,11 @@ public abstract class GameEditor {
         entityList.add(add);
         add.Start();
         this.renderer.add(add);
-    }
-    public void RemoveGameObjectFromScreen(Entity add){
-        entityList.remove(add);
-        renderer.RemoveEntity(add);
+
+
     }
 
-    public Camera GetCamera() {
-        return this.camera;
+    public static Camera GetCamera() {
+        return camera;
     }
 }
