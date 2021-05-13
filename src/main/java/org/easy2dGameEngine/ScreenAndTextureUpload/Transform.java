@@ -2,7 +2,7 @@ package org.easy2dGameEngine.ScreenAndTextureUpload;
 
 import org.joml.Vector2f;
 
-public class Transform {
+ class Transform {
 
     public Vector2f position;
     public Vector2f scale;

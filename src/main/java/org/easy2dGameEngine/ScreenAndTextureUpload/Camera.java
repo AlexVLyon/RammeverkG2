@@ -10,7 +10,7 @@ public class Camera {
     private Matrix4f projection, viewMatrix;
     private Vector2f Camerapos;
 
-    public Camera(Vector2f posisjon) {
+    protected Camera(Vector2f posisjon) {
         this.Camerapos = posisjon;
         this.projection = new Matrix4f();
         this.viewMatrix = new Matrix4f();

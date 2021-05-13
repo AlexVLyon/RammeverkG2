@@ -23,8 +23,8 @@ public class Screen {
     //set method class
     private GameEditor gameEditor;
 
-    public void ConnectClassToScreen(GameEditor screenConntector){
-        gameEditor = screenConntector;
+    public void ConnectClassToScreen(GameEditor Connect){
+        gameEditor = Connect;
 
     }
     public void run()  {
