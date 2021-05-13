@@ -50,10 +50,6 @@ public class KeyEventListener {
     }
 
     public static boolean ButtonPressed(KeyEvents key) {
-        //spacebar
-
             return keyboardispressed.keyPressed[key.ordinal() + 65];
-
-
     }
 }

@@ -16,7 +16,7 @@ public abstract class Entity {
 
     String TexturefilePath;
     Texture tex;
-    public Transform Gettransform;
+    protected Transform Gettransform;
 
     public Entity(String TexturefilePath, int x, int y) {
 
