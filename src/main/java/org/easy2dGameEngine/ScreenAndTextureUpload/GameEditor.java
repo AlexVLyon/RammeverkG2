@@ -41,7 +41,7 @@ public abstract class GameEditor {
 
     public abstract void init();
 
-    public void AddGameObjectsToScreen(Entity entity) {
+    public void AddGameObjectToScreen(Entity entity) {
         entityList.add(entity);
         entity.Start();
         this.renderer.add(entity);

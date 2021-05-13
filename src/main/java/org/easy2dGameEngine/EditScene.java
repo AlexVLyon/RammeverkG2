@@ -37,8 +37,8 @@ public class EditScene extends GameEditor {
     @Override
     public void Update() {
 
-        AddGameObjectsToScreen(test);
-        AddGameObjectsToScreen(test2);
+        AddGameObjectToScreen(test);
+        AddGameObjectToScreen(test2);
 GetCamera().followEntity(test2,100,-400);
         if(test2.Collision(test)) {
                 test.setXpos(returnRandomintX());
