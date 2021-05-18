@@ -151,7 +151,6 @@ public abstract class Entity {
     public boolean Collision(Entity entityCollision) {
         if (entityCollision.Gettransform.position.x + 20 >= this.Gettransform.position.x && entityCollision.Gettransform.position.x <= this.Gettransform.position.x + 20 &&
                 entityCollision.Gettransform.position.y + 20 >= this.Gettransform.position.y && entityCollision.Gettransform.position.y <= this.Gettransform.position.y + 20) {
-            System.out.println("collision happening");
             return true;
         }
         return false;
