@@ -15,6 +15,9 @@ import static org.lwjgl.opengl.GL11C.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
+/**
+ * class to define a screen
+ */
 public class Screen {
     private long window;
     private float blue,red,green,alpha;
@@ -22,10 +25,19 @@ public class Screen {
     //set method class
     private GameEditor gameEditor;
 
+    /**
+     * This method connects together a class that inherits from gameEditor
+     * @param Connect This method takes in an class which has inheritet from gameEditor to run its functionality
+     * @see GameEditor
+     */
     public void ConnectClassToScreen(GameEditor Connect){
         gameEditor = Connect;
 
     }
+
+    /**
+     * This method will run the screen
+     */
     public void run()  {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
         gameEditor.init();
@@ -42,10 +54,13 @@ public class Screen {
         glfwSetErrorCallback(null).free();
     }
 
-    public Screen(){
-
-    }
-
+    /**
+     * This method will create a screen
+     *
+     * @param width Takes in an int width, which determines the max width-area of the play-zone
+     * @param height Takes in an int height, which determines the max height-area of the play-zone
+     * @param title takes in a string which determines the title of the screen
+     */
     public void CreateWindow(int width, int height, String title) {
 
         // Setup an error callback. The default implementation
@@ -141,7 +156,14 @@ public class Screen {
         }
     }
 
-
+    /**
+     * This method will change the screen-background color
+     *
+     * @param blue This determines how much of the blue-color the screen should have
+     * @param red This determines how much red-color the the screen should have
+     * @param green This determines how much green-color the the screen should have
+     * @param alpha This determines how much alpha-color the the screen should have
+     */
     public void ChangeScreenColor(float blue, float red, float green, float alpha){
             this.blue = blue;
             this.red = red;

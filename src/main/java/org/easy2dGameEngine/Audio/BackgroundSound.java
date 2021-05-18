@@ -12,17 +12,23 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class BackgroundSound {
 
-    // to store current position
+    //to store current position
     Long currentFrame;
     Clip clip;
 
-    // current status of clip
+    //current status of clip
     String status;
 
     AudioInputStream audioInputStream;
     static String filePath;
 
-    // constructor to initialize streams and clip
+    /**
+     * constructor to initialize streams and clip
+     * * @return This constructor returns backgroundsound
+     * @param filePath this takes in .wav file to play sound
+     *
+     */
+
     public BackgroundSound(String filePath)
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {

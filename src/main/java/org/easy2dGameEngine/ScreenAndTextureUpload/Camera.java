@@ -5,6 +5,9 @@ import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+/**
+ * a class to handle camera functionality
+ */
 public class Camera {
 
     private Matrix4f projection, viewMatrix;
@@ -17,6 +20,13 @@ public class Camera {
         adjustProjection();
     }
 
+    /**
+     * This method will follow an entity around the screen
+     *
+     * @param entity takes in an entity object, which the camera will follow around
+     * @param x defines the x-axis distance between the camera and the entity
+     * @param y defines the y-axis distance between the camera and the entity
+     */
     public void followEntity(Entity entity, int x, int y) {
         this.Camerapos.x = entity.Gettransform.position.x + x;
         this.Camerapos.y = entity.Gettransform.position.y + y;
@@ -42,10 +52,14 @@ public class Camera {
         return this.projection;
     }
 
+    /**
+     * This method will move the camera on the x- and y-axis
+     *
+     * @param x moves the camera in the x-axis based on the parameter
+     * @param y moves the camera in the y-axis based on the parameter
+     */
     public void MoveCamera(int x, int y) {
         this.Camerapos.x += x;
         this.Camerapos.x += y;
     }
-
-
 }
