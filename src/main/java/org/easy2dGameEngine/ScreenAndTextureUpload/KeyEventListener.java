@@ -1,4 +1,4 @@
-package org.easy2dGameEngine.Window;
+package org.easy2dGameEngine.ScreenAndTextureUpload;
 
 import static org.lwjgl.glfw.GLFW.*;
 

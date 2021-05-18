@@ -1,7 +1,7 @@
 package org.easy2dGameEngine;
 
 import org.easy2dGameEngine.ScreenAndTextureUpload.GameEditor;
-import org.easy2dGameEngine.Window.Screen;
+import org.easy2dGameEngine.ScreenAndTextureUpload.Screen;
 
 public class Main {
 

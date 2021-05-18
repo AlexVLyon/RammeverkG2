@@ -25,28 +25,15 @@ public abstract class GameEditor {
         batch.UpdateText();
     }
 
-    public void Render() {
-        this.renderer.render();
-    }
 
-
-    public void start() {
-        for (Entity en : entityList) {
-            this.renderer.add(en);
-            this.renderer.render();
-        }
-    }
 
     public abstract void Update();
 
     public abstract void init();
 
     public void AddGameObjectToScreen(Entity entity) {
-        entityList.add(entity);
-        entity.Start();
-        this.renderer.add(entity);
-
-
+        StartAndRender.entityList.add(entity);
+        StartAndRender.renderer.add(entity);
     }
 
     public static Camera GetCamera() {

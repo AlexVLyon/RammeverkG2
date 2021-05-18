@@ -94,11 +94,7 @@ public abstract class Entity {
         c.entity = this;
     }
 
-    public void Start() {
-        for (int i = 0; i < components.size(); i++) {
-            components.get(i).Start();
-        }
-    }
+
 
     public void flip() {
         stbi_set_flip_vertically_on_load(true);

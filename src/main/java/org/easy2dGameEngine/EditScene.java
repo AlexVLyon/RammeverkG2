@@ -1,7 +1,8 @@
 package org.easy2dGameEngine;
 
 import org.easy2dGameEngine.ScreenAndTextureUpload.GameEditor;
-import org.easy2dGameEngine.Window.KeyEventListener;
+import org.easy2dGameEngine.ScreenAndTextureUpload.KeyEventListener;
+
 
 
 import java.util.Random;
