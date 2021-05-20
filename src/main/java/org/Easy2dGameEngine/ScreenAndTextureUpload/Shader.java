@@ -1,20 +1,16 @@
-package org.easy2dGameEngine.ScreenAndTextureUpload;
+package org.Easy2dGameEngine.ScreenAndTextureUpload;
 
 
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL15;
 
 import java.nio.FloatBuffer;
 
-import static org.lwjgl.opengl.GL15C.GL_ELEMENT_ARRAY_BUFFER;
 import static org.lwjgl.opengl.GL15C.glGenBuffers;
 import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL30.glBindVertexArray;
-import static org.lwjgl.opengl.GL31.GL_TEXTURE_BUFFER;
 
 
- class Shader {
+class Shader {
     private int shaderID;
     boolean using;
 

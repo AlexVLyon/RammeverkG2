@@ -1,10 +1,7 @@
-package org.easy2dGameEngine.ScreenAndTextureUpload;
+package org.Easy2dGameEngine.ScreenAndTextureUpload;
 
 
 import org.joml.Vector2f;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**

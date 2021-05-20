@@ -1,11 +1,9 @@
-package org.easy2dGameEngine;
+package org.Easy2dGameEngine;
 
-import org.easy2dGameEngine.Audio.SoundBuffer;
-import org.easy2dGameEngine.Audio.SoundListener;
-import org.easy2dGameEngine.Audio.SoundSource;
-import org.easy2dGameEngine.ScreenAndTextureUpload.GameEditor;
-import org.easy2dGameEngine.ScreenAndTextureUpload.Screen;
-import org.joml.Vector3f;
+import org.Easy2dGameEngine.Audio.SoundBuffer;
+import org.Easy2dGameEngine.Audio.SoundSource;
+import org.Easy2dGameEngine.ScreenAndTextureUpload.GameEditor;
+import org.Easy2dGameEngine.ScreenAndTextureUpload.Screen;
 
 public class Main {
 

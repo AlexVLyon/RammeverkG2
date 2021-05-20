@@ -1,4 +1,4 @@
-package org.easy2dGameEngine.ScreenAndTextureUpload;
+package org.Easy2dGameEngine.ScreenAndTextureUpload;
 
 import java.util.ArrayList;
 import java.util.List;

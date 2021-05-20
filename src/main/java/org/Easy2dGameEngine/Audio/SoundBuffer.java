@@ -1,4 +1,4 @@
-package org.easy2dGameEngine.Audio;
+package org.Easy2dGameEngine.Audio;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;

@@ -1,6 +1,6 @@
-package org.easy2dGameEngine;
+package org.Easy2dGameEngine;
 
-import org.easy2dGameEngine.ScreenAndTextureUpload.Entity;
+import org.Easy2dGameEngine.ScreenAndTextureUpload.Entity;
 
 public class GameObject extends Entity {
     private int hp,attack,defence;

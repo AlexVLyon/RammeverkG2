@@ -1,4 +1,4 @@
-package org.easy2dGameEngine.Audio;
+package org.Easy2dGameEngine.Audio;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.system.MemoryUtil;

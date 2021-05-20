@@ -1,8 +1,7 @@
-package org.easy2dGameEngine.Audio;
+package org.Easy2dGameEngine.Audio;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

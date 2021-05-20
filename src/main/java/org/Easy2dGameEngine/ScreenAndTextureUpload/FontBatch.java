@@ -1,4 +1,4 @@
-package org.easy2dGameEngine.ScreenAndTextureUpload;
+package org.Easy2dGameEngine.ScreenAndTextureUpload;
 
 import org.joml.Matrix4f;
 
