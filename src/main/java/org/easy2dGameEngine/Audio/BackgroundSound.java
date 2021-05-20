@@ -26,7 +26,6 @@ public class BackgroundSound {
      * constructor to initialize streams and clip
      * * @return This constructor returns backgroundsound
      * @param filePath this takes in .wav file to play sound
-     *
      */
 
     public BackgroundSound(String filePath)
