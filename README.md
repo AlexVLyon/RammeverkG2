@@ -42,8 +42,7 @@
            public void MoveSnake(){
             ....
             ..
-           }
-            
+           }           
     }
 
    
