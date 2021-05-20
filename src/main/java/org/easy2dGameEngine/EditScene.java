@@ -57,6 +57,7 @@ GetCamera().followEntity(test2,100,-400);
             test.MoveEntityY(-10);
         }
 
-        AddTextToScreen("Antall ganger truffet: " + truff  , 100, 500, 1f, 0xAA01BB);
+        AddTextToScreen("Antall ganger truffet: " + truff  , 100, 500);
+        AddTextToScreen("Antall gangeras truffet: " + truff  , 100, 200,1f,0);
     }
 }
