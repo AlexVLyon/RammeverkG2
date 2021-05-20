@@ -31,7 +31,7 @@
 
 <p>Our Snake class inherits from Entity</p>
 
-### Example 3:
+### Example 2:
 
     public class Snake extends Entity {
 
