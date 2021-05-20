@@ -26,8 +26,8 @@ public Snake(String filepath, int x, int y){
 
 //Main File
  Screen s = new Screen();
-        s.CreateWindow(1000, 1000, "tt");
-        s.ChangeScreenColor(1, 1, 1, 1);
+        s.CreateWindow(1000, 1000, "title");
+        s.ChangeScreenColor(1, 1, 1, 1); // white background
         GameEditor a = new EditScene();
 
         s.ConnectClassToScreen(a);

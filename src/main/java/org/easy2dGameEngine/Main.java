@@ -20,7 +20,7 @@ public class Main {
 
 
 
-        SoundListener marioEars = new SoundListener(new Vector3f(mario.getX(), mario.getY(), 0));
+       // SoundListener marioEars = new SoundListener(new Vector3f(mario.getX(), mario.getY(), 0));
 
         try {
             SoundBuffer jumpingSound = new SoundBuffer("/sounds/jump.wav");
