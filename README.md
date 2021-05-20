@@ -2,7 +2,8 @@
 
 ## Get started:
 
-Import JAR file, create Main.class and another .class file of your naming. We will call this “EditScene” for this guide. This class will extend GameEditor.
+Import JAR file, create Main.class and another .class file of your naming.
+We will call this “EditScene” for this guide. This class will extend GameEditor.
 
 public class EditScene extends GameEditor {
 @Override
@@ -23,4 +24,12 @@ public Snake(String filepath, int x, int y){
 }
 //Enter your snake code functionality here.
 
+//Main File
+ Screen s = new Screen();
+        s.CreateWindow(1000, 1000, "tt");
+        s.ChangeScreenColor(1, 1, 1, 1);
+        GameEditor a = new EditScene();
+
+        s.ConnectClassToScreen(a);
+        s.run();
 }
