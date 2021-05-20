@@ -5,7 +5,8 @@
 <p>Import/create JAR file and import the file to your project.And create Main.class and another .class file of your naming. We Will Create a class named “EditScene” and Snake for this guide.</p>
 <p> EditScene class inherits from GameEditor </p>
 <p> We use The snake class functionality here in this way </p>
-### Example 1
+
+          ### Example 1
 
 
     public class EditScene extends GameEditor {
