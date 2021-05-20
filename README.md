@@ -27,15 +27,16 @@ public class EditScene extends GameEditor {
 <p>Our Snake class inherits from Entity</p>
 ### Example 3
 public class Snake extends Entity {
-       public Snake(String filepath, int x, int y){
-            super(filepath,x,y);
+
+> //public Snake(String filepath, int x, int y){
+      >      super(filepath,x,y);
             
+      >      //Enter your snake code functionality here.
             
-            //Enter your snake code functionality here.
-            public void MoveSnake(){
-            ....
-            ..
-            }
+      >      public void MoveSnake(){
+       >     ....
+       >     ..
+       >     }
             
 }
 
