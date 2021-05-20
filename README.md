@@ -2,7 +2,7 @@
 
 ## Get started:
 
-Import/create and import JAR file to your project. Create Main.class and another .class file of your naming. We will call this “EditScene” for this guide. This class will extend GameEditor.
+Import/create JAR file and import the file to your project. Create Main.class and another .class file of your naming. We will call this “EditScene” for this guide. This class will extend GameEditor.
 Now you have two classes, main.java and EditScene.java:
 
 public class EditScene extends GameEditor {
