@@ -30,7 +30,8 @@
 
 
 <p>Our Snake class inherits from Entity</p>
-### Example 3
+
+### Example 3:
 
     public class Snake extends Entity {
 
@@ -47,7 +48,7 @@
 
    
 
-### Main method
+### Main method:
 <p> We use methods from the screen class to create a screen, and then connect our EditScene class that we created to the ConnectClassToScreen() method and then we run the game </p>
 
 
