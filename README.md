@@ -10,9 +10,8 @@
 
 
     public class EditScene extends GameEditor {
-
-
        Snake snake;
+       
        @Override
        public void init() {
           //Initialize code here
