@@ -9,10 +9,9 @@ import java.nio.IntBuffer;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.stb.STBImage.*;
 
- class Texture {
+class Texture {
     public String filepath;
     private int textureId;
-
 
 
     public Texture(String filepath) {

@@ -20,17 +20,18 @@ import static org.lwjgl.system.MemoryUtil.NULL;
  */
 public class Screen {
     private long window;
-    private float blue,red,green,alpha;
+    private float blue, red, green, alpha;
 
     //set method class
     private GameEditor gameEditor;
 
     /**
      * This method connects together a class that inherits from gameEditor
+     *
      * @param Connect This method takes in an class which has inheritet from gameEditor to run its functionality
      * @see GameEditor
      */
-    public void ConnectClassToScreen(GameEditor Connect){
+    public void ConnectClassToScreen(GameEditor Connect) {
         gameEditor = Connect;
 
     }
@@ -38,7 +39,7 @@ public class Screen {
     /**
      * This method will run the screen
      */
-    public void run()  {
+    public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
         gameEditor.init();
         StartAndRender.start();
@@ -57,9 +58,9 @@ public class Screen {
     /**
      * This method will create a screen
      *
-     * @param width Takes in an int width, which determines the max width-area of the play-zone
+     * @param width  Takes in an int width, which determines the max width-area of the play-zone
      * @param height Takes in an int height, which determines the max height-area of the play-zone
-     * @param title takes in a string which determines the title of the screen
+     * @param title  takes in a string which determines the title of the screen
      */
     public void CreateWindow(int width, int height, String title) {
 
@@ -69,7 +70,7 @@ public class Screen {
         GLFWErrorCallback.createPrint(System.err).set();
 
         // Initialize GLFW. Most GLFW functions will not work before doing this.
-        if ( !glfwInit() ) {
+        if (!glfwInit()) {
             System.exit(1);
             throw new IllegalStateException("Unable to initialize GLFW");
 
@@ -81,17 +82,17 @@ public class Screen {
 
         // Create the window
         window = glfwCreateWindow(width, height, title, NULL, NULL);
-        if ( window == NULL )
+        if (window == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
 
         // Setup a key callback. It will be called every time a key is pressed, repeated or released.
         glfwSetKeyCallback(window, (window, key, scancode, action, mods) -> {
-            if ( key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
         });
 
         // Get the thread stack and push a new frame
-        try ( MemoryStack stack = stackPush() ) {
+        try (MemoryStack stack = stackPush()) {
             IntBuffer pWidth = stack.mallocInt(1); // int*
             IntBuffer pHeight = stack.mallocInt(1); // int*
 
@@ -123,11 +124,10 @@ public class Screen {
     }
 
 
-
-    private void loop()  {
+    private void loop() {
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -136,7 +136,7 @@ public class Screen {
         glDisable(GL_DEPTH_TEST);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
-        while ( !glfwWindowShouldClose(window) ) {
+        while (!glfwWindowShouldClose(window)) {
             glClearColor(red, green, blue, alpha);
 
             glClear(GL_COLOR_BUFFER_BIT); // clear the framebuffer
@@ -159,15 +159,15 @@ public class Screen {
     /**
      * This method will change the screen-background color
      *
-     * @param blue This determines how much of the blue-color the screen should have
-     * @param red This determines how much red-color the the screen should have
+     * @param blue  This determines how much of the blue-color the screen should have
+     * @param red   This determines how much red-color the the screen should have
      * @param green This determines how much green-color the the screen should have
      * @param alpha This determines how much alpha-color the the screen should have
      */
-    public void ChangeScreenColor(float blue, float red, float green, float alpha){
-            this.blue = blue;
-            this.red = red;
-            this.green = green;
-            this.alpha = alpha;
+    public void ChangeScreenColor(float blue, float red, float green, float alpha) {
+        this.blue = blue;
+        this.red = red;
+        this.green = green;
+        this.alpha = alpha;
     }
 }
