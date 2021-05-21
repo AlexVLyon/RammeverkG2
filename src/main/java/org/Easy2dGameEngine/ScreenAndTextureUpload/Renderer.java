@@ -3,7 +3,7 @@ package org.Easy2dGameEngine.ScreenAndTextureUpload;
 import java.util.ArrayList;
 import java.util.List;
 
- class Renderer {
+class Renderer {
 
     private final int MAX_BATCH_SIZE = 1000;
     private List<RenderBatch> batchList;
@@ -52,7 +52,7 @@ import java.util.List;
 
     public void remove(SpriteRenderer en) {
         for (RenderBatch batch : batchList) {
-                batch.removeSprite(en);
+            batch.removeSprite(en);
 
         }
     }

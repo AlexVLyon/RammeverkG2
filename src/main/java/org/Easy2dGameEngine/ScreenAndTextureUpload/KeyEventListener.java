@@ -13,32 +13,32 @@ public class KeyEventListener {
      * This is a enum which contains all available buttons to use
      */
     public enum KeyEvents {
-         A,
-         B,
-         C,
-         D,
-         E,
-         F,
-         G,
-         H,
-         I,
-         J,
-         K,
-         L,
-         M,
-         N,
-         O,
-         P,
-         Q,
-         R,
-         S,
-         T,
-         U,
-         V,
-         W,
-         X,
-         Y,
-         Z
+        A,
+        B,
+        C,
+        D,
+        E,
+        F,
+        G,
+        H,
+        I,
+        J,
+        K,
+        L,
+        M,
+        N,
+        O,
+        P,
+        Q,
+        R,
+        S,
+        T,
+        U,
+        V,
+        W,
+        X,
+        Y,
+        Z
     }
 
 
@@ -55,11 +55,12 @@ public class KeyEventListener {
 
     /**
      * This method returns true or false based on whether a button is pressed or not
+     *
      * @param key Takes in a enum which checks what button is pressed
      * @return returns true or false if the button that is specified is pressed or not
      * @see KeyEvents
      */
     public static boolean ButtonPressed(KeyEvents key) {
-            return keyboardispressed.keyPressed[key.ordinal() + 65];
+        return keyboardispressed.keyPressed[key.ordinal() + 65];
     }
 }

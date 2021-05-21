@@ -3,29 +3,27 @@ package org.Easy2dGameEngine;
 import org.Easy2dGameEngine.ScreenAndTextureUpload.Entity;
 
 public class GameObject extends Entity {
-    private int hp,attack,defence;
+    private int hp, attack, defence;
     private String name;
 
 
-    public GameObject(String file, int x, int y){
-        super(file,x,y);
+    public GameObject(String file, int x, int y) {
+        super(file, x, y);
     }
 
 
-
-
-    public void DamageGameObject(GameObject gameObject){
-int gethp =  gameObject.getHp();
+    public void DamageGameObject(GameObject gameObject) {
+        int gethp = gameObject.getHp();
         int damageReceived = getAttack() - gameObject.defence;
         if (damageReceived >= 0)
-           gethp -= damageReceived;
+            gethp -= damageReceived;
 
         gameObject.setHp(gethp);
     }
 
 
-    public boolean Dead(){
-        if(this.hp <= 0) {
+    public boolean Dead() {
+        if (this.hp <= 0) {
             System.out.println("Dead");
             return true;
 

@@ -24,8 +24,8 @@ public class Camera {
      * This method will follow an entity around the screen
      *
      * @param entity takes in an entity object, which the camera will follow around
-     * @param x defines the x-axis distance between the camera and the entity
-     * @param y defines the y-axis distance between the camera and the entity
+     * @param x      defines the x-axis distance between the camera and the entity
+     * @param y      defines the y-axis distance between the camera and the entity
      */
     public void followEntity(Entity entity, int x, int y) {
         this.Camerapos.x = entity.Gettransform.position.x + x;

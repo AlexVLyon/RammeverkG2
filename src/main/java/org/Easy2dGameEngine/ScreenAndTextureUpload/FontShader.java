@@ -8,7 +8,7 @@ import java.nio.FloatBuffer;
 
 import static org.lwjgl.opengl.GL20.*;
 
- class FontShader {
+class FontShader {
 
     private int shaderProgramID;
     private boolean beingUsed = false;
@@ -107,7 +107,6 @@ import static org.lwjgl.opengl.GL20.*;
         use();
         glUniform1i(varLocation, slot);
     }
-
 
 
 }

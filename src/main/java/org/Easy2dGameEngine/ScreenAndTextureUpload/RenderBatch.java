@@ -16,7 +16,7 @@ import static org.lwjgl.opengl.GL20C.glVertexAttribPointer;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
- class RenderBatch {
+class RenderBatch {
 
     private final int POS_SIZE = 2;
     private final int COLOR_SIZE = 4;
@@ -89,14 +89,14 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
     public void removeSprite(SpriteRenderer spr) {
 
-            for (int i = 0; i < this.numSprites; i++) {
-                if (this.sprites[i] == spr) {
-                    textures.remove(spr.getTexture());
-                    this.sprites[i] = null;
-                    this.numSprites--;
-                    break;
-                }
+        for (int i = 0; i < this.numSprites; i++) {
+            if (this.sprites[i] == spr) {
+                textures.remove(spr.getTexture());
+                this.sprites[i] = null;
+                this.numSprites--;
+                break;
             }
+        }
 
     }
 

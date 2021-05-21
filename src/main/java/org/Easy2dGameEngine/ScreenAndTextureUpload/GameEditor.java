@@ -16,10 +16,10 @@ public abstract class GameEditor {
     /**
      * This method will take in string value, int x and y positions, scale value and int RgbColors To Draw on the screen
      *
-     * @param text takes in a string value, that is going to be drawn on the screen
-     * @param xpos takes in a int value, that specifies the x-location of the text
-     * @param ypos takes in a int value that specifies the y-location of the text
-     * @param scale takes in a float value that specifies the scale of the text
+     * @param text      takes in a string value, that is going to be drawn on the screen
+     * @param xpos      takes in a int value, that specifies the x-location of the text
+     * @param ypos      takes in a int value that specifies the y-location of the text
+     * @param scale     takes in a float value that specifies the scale of the text
      * @param rgbColors takes in RGB values which will define the color of the text
      */
     public void AddTextToScreen(String text, int xpos, int ypos, float scale, int rgbColors) {
@@ -43,15 +43,14 @@ public abstract class GameEditor {
             batch.initBatch();
             firstime = false;
         }
-        batch.addText(text, xpos, ypos,  1f, 0xAA01BB);
+        batch.addText(text, xpos, ypos, 1f, 0xAA01BB);
         batch.UpdateText();
     }
 
     /**
-     *
      * @param text  takes in a string value, that is going to be drawn on the screen
-     * @param xpos takes in a int value that specifies the x-location of the text
-     * @param ypos takes in a int value that specifies the y-location of the text
+     * @param xpos  takes in a int value that specifies the x-location of the text
+     * @param ypos  takes in a int value that specifies the y-location of the text
      * @param scale takes in a float value that specifies the scale of the text
      */
     public void AddTextToScreen(String text, int xpos, int ypos, float scale) {
@@ -59,7 +58,7 @@ public abstract class GameEditor {
             batch.initBatch();
             firstime = false;
         }
-        batch.addText(text, xpos, ypos,  scale, 0xAA01BB);
+        batch.addText(text, xpos, ypos, scale, 0xAA01BB);
         batch.UpdateText();
     }
 
@@ -85,7 +84,7 @@ public abstract class GameEditor {
     }
 
     /**
-     *This method gets the camera
+     * This method gets the camera
      *
      * @return returns the camera of the screen
      * @see Camera
