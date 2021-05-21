@@ -9,6 +9,9 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * Class for BackgroundSound.
+ */
 public class BackgroundSound {
 
     //to store current position

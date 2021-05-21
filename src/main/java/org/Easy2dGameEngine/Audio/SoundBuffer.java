@@ -16,6 +16,9 @@ import org.lwjgl.system.MemoryUtil;
 
 import static org.lwjgl.system.MemoryUtil.*;
 
+/**
+ * Class for SoundBuffer
+ */
 public class SoundBuffer {
 
     private final int bufferId;
@@ -24,6 +27,11 @@ public class SoundBuffer {
 
     private ByteBuffer vorbis = null;
 
+    /**
+     *
+     * @param file file path for .wav file to be played.
+     * @throws Exception
+     */
     public SoundBuffer(String file) throws Exception {
         this.bufferId = alGenBuffers();
         try (STBVorbisInfo info = STBVorbisInfo.malloc()) {
@@ -34,10 +42,17 @@ public class SoundBuffer {
         }
     }
 
+    /**
+     *
+     * @return bufferId of the current bufferObject.
+     */
     public int getBufferId() {
         return this.bufferId;
     }
 
+    /**
+     *  Class to clean up the buffer, when deleting.
+     */
     public void cleanup() {
         alDeleteBuffers(this.bufferId);
         if (pcm != null) {
